@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud", "FacetedWorlds.ThoughtCloud\FacetedWorlds.ThoughtCloud.csproj", "{335AC712-EA79-4E50-8B60-797D30A8A73C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud.Model", "FacetedWorlds.ThoughtCloud.Model\FacetedWorlds.ThoughtCloud.Model.csproj", "{8C74FF55-F6DD-4CEF-A8E9-DD5C5D5177CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud.ViewModel", "FacetedWorlds.ThoughtCloud.ViewModel\FacetedWorlds.ThoughtCloud.ViewModel.csproj", "{CC824C79-4D13-49AE-9AEA-831CD886FA7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud.UnitTest", "FacetedWorlds.ThoughtCloud.UnitTest\FacetedWorlds.ThoughtCloud.UnitTest.csproj", "{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{335AC712-EA79-4E50-8B60-797D30A8A73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335AC712-EA79-4E50-8B60-797D30A8A73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335AC712-EA79-4E50-8B60-797D30A8A73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335AC712-EA79-4E50-8B60-797D30A8A73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C74FF55-F6DD-4CEF-A8E9-DD5C5D5177CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C74FF55-F6DD-4CEF-A8E9-DD5C5D5177CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C74FF55-F6DD-4CEF-A8E9-DD5C5D5177CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C74FF55-F6DD-4CEF-A8E9-DD5C5D5177CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC824C79-4D13-49AE-9AEA-831CD886FA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC824C79-4D13-49AE-9AEA-831CD886FA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC824C79-4D13-49AE-9AEA-831CD886FA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC824C79-4D13-49AE-9AEA-831CD886FA7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

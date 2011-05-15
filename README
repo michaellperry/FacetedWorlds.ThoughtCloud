@@ -1,0 +1,9 @@
+An example of Correspondence. An out-of-browser Silverlight application
+that stores data locally and synchronizes with a central service.
+
+With this collaborative mind-mapping tool, you can share thought
+clouds with other users. Any cloud you create on one machine is available
+on any other machine. If you work with clouds off-line, they synchronize
+the next time you connect.
+
+For information on Correspondence, see http://correspondence.codeplex.com
