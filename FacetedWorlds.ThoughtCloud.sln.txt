@@ -1,0 +1,8 @@
+digraph "c:\Projects\FacetedWorlds.ThoughtCloud\FacetedWorlds.ThoughtCloud.sln" {
+  rankdir=TD
+  "FacetedWorlds.ThoughtCloud"->"FacetedWorlds.ThoughtCloud.Model"
+  "FacetedWorlds.ThoughtCloud"->"FacetedWorlds.ThoughtCloud.ViewModel"
+  "FacetedWorlds.ThoughtCloud.ViewModel"->"FacetedWorlds.ThoughtCloud.Model"
+  "FacetedWorlds.ThoughtCloud.UnitTest"->"FacetedWorlds.ThoughtCloud.Model"
+  "FacetedWorlds.ThoughtCloud.UnitTest"->"FacetedWorlds.ThoughtCloud.ViewModel"
+}

@@ -13,6 +13,10 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             {
                 return "My thought";
             }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

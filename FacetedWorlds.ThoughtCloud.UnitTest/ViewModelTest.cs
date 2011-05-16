@@ -33,5 +33,13 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
             ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
             Assert.AreEqual("My thought", thought.Text);
         }
+
+        [TestMethod]
+        public void CanChangeThoughtText()
+        {
+            ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
+            thought.Text = "New thought";
+            Assert.AreEqual("New thought", thought.Text);
+        }
     }
 }
