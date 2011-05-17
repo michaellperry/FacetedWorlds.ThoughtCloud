@@ -24,7 +24,7 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
                 .Register<Model.CorrespondenceModel>();
 
             _identity = _community.AddFact(new Identity("mike"));
-            Thought thought = _community.AddFact(new Thought());
+            Thought thought = _community.AddFact(new Thought(_identity));
             _cloudViewModel = new CloudViewModel(thought);
         }
 
@@ -41,6 +41,22 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
             ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
             thought.Text = "New thought";
             Assert.AreEqual("New thought", thought.Text);
+        }
+
+        [TestMethod]
+        public void CanTellWhoHadAThought()
+        {
+            ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
+            Assert.AreEqual("mike", thought.HadBy);
+        }
+
+        [TestMethod]
+        public void CanTellWhenSomeoneElseHadAThought()
+        {
+            Identity jim = _community.AddFact(new Identity("jim"));
+            Thought jimsThought = _community.AddFact(new Thought(jim));
+            ThoughtViewModel jimsThoughtViewModel = new ThoughtViewModel(jimsThought);
+            Assert.AreEqual("jim", jimsThoughtViewModel.HadBy);
         }
     }
 }

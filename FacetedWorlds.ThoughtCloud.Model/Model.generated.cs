@@ -11,6 +11,7 @@ using System.IO;
 digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
+    Thought -> Identity
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
     DisableToastNotification -> Identity
@@ -166,6 +167,11 @@ namespace FacetedWorlds.ThoughtCloud.Model
 		}
 
         // Roles
+        public static Role RoleCreator = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"creator",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
+			false));
 
         // Queries
         public static Query QueryText = new Query()
@@ -176,6 +182,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Predicates
 
         // Predecessors
+        private PredecessorObj<Identity> _creator;
 
         // Unique
         private Guid _unique;
@@ -187,16 +194,19 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Business constructor
         public Thought(
+            Identity creator
             )
         {
             _unique = Guid.NewGuid();
             InitializeResults();
+            _creator = new PredecessorObj<Identity>(this, RoleCreator, creator);
         }
 
         // Hydration constructor
         private Thought(FactMemento memento)
         {
             InitializeResults();
+            _creator = new PredecessorObj<Identity>(this, RoleCreator, memento);
         }
 
         // Result initializer
@@ -206,6 +216,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
         }
 
         // Predecessor access
+        public Identity Creator
+        {
+            get { return _creator.Fact; }
+        }
 
         // Field access
 		public Guid Unique { get { return _unique; } }
