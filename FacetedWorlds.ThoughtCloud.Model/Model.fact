@@ -11,6 +11,14 @@ query:
     }
 }
 
+fact Thought {
+key:
+	unique;
+
+mutable:
+	string text;
+}
+
 fact DisableToastNotification {
 key:
     unique;

@@ -11,6 +11,8 @@ using System.IO;
 digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
+    ThoughtText -> Thought
+    ThoughtText -> ThoughtText [label="  *"]
     DisableToastNotification -> Identity
     EnableToastNotification -> DisableToastNotification [label="  *"]
 }
@@ -114,6 +116,231 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             get { return _isToastNotificationDisabled; }
         }
+
+        // Mutable property access
+
+    }
+    
+    public partial class Thought : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				Thought newFact = new Thought(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+						newFact._unique = (Guid)_fieldSerializerByType[typeof(Guid)].ReadData(output);
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				Thought fact = (Thought)obj;
+				_fieldSerializerByType[typeof(Guid)].WriteData(output, fact._unique);
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.Thought", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+
+        // Queries
+        public static Query QueryText = new Query()
+            .JoinSuccessors(ThoughtText.RoleThought, Condition.WhereIsEmpty(ThoughtText.QueryIsCurrent)
+            )
+            ;
+
+        // Predicates
+
+        // Predecessors
+
+        // Unique
+        private Guid _unique;
+
+        // Fields
+
+        // Results
+        private Result<ThoughtText> _text;
+
+        // Business constructor
+        public Thought(
+            )
+        {
+            _unique = Guid.NewGuid();
+            InitializeResults();
+        }
+
+        // Hydration constructor
+        private Thought(FactMemento memento)
+        {
+            InitializeResults();
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+            _text = new Result<ThoughtText>(this, QueryText);
+        }
+
+        // Predecessor access
+
+        // Field access
+		public Guid Unique { get { return _unique; } }
+
+
+        // Query result access
+
+        // Mutable property access
+        public Disputable<string> Text
+        {
+            get { return _text.Select(fact => fact.Value).AsDisputable(); }
+			set
+			{
+				Community.AddFact(new ThoughtText(this, _text, value.Value));
+			}
+        }
+
+    }
+    
+    public partial class ThoughtText : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				ThoughtText newFact = new ThoughtText(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+						newFact._value = (string)_fieldSerializerByType[typeof(string)].ReadData(output);
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				ThoughtText fact = (ThoughtText)obj;
+				_fieldSerializerByType[typeof(string)].WriteData(output, fact._value);
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.ThoughtText", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+        public static Role RoleThought = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"thought",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Thought", 1),
+			false));
+        public static Role RolePrior = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"prior",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.ThoughtText", 1),
+			false));
+
+        // Queries
+        public static Query QueryIsCurrent = new Query()
+            .JoinSuccessors(ThoughtText.RolePrior)
+            ;
+
+        // Predicates
+        public static Condition IsCurrent = Condition.WhereIsEmpty(QueryIsCurrent);
+
+        // Predecessors
+        private PredecessorObj<Thought> _thought;
+        private PredecessorList<ThoughtText> _prior;
+
+        // Fields
+        private string _value;
+
+        // Results
+
+        // Business constructor
+        public ThoughtText(
+            Thought thought
+            ,IEnumerable<ThoughtText> prior
+            ,string value
+            )
+        {
+            InitializeResults();
+            _thought = new PredecessorObj<Thought>(this, RoleThought, thought);
+            _prior = new PredecessorList<ThoughtText>(this, RolePrior, prior);
+            _value = value;
+        }
+
+        // Hydration constructor
+        private ThoughtText(FactMemento memento)
+        {
+            InitializeResults();
+            _thought = new PredecessorObj<Thought>(this, RoleThought, memento);
+            _prior = new PredecessorList<ThoughtText>(this, RolePrior, memento);
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+        }
+
+        // Predecessor access
+        public Thought Thought
+        {
+            get { return _thought.Fact; }
+        }
+        public IEnumerable<ThoughtText> Prior
+        {
+            get { return _prior; }
+        }
+     
+        // Field access
+        public string Value
+        {
+            get { return _value; }
+        }
+
+        // Query result access
 
         // Mutable property access
 
@@ -333,6 +560,20 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Identity._correspondenceFactType,
 				Identity.QueryIsToastNotificationDisabled.QueryDefinition);
+			community.AddType(
+				Thought._correspondenceFactType,
+				new Thought.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { Thought._correspondenceFactType }));
+			community.AddQuery(
+				Thought._correspondenceFactType,
+				Thought.QueryText.QueryDefinition);
+			community.AddType(
+				ThoughtText._correspondenceFactType,
+				new ThoughtText.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { ThoughtText._correspondenceFactType }));
+			community.AddQuery(
+				ThoughtText._correspondenceFactType,
+				ThoughtText.QueryIsCurrent.QueryDefinition);
 			community.AddType(
 				DisableToastNotification._correspondenceFactType,
 				new DisableToastNotification.CorrespondenceFactFactory(fieldSerializerByType),
