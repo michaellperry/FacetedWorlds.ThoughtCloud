@@ -14,6 +14,7 @@ digraph "FacetedWorlds.ThoughtCloud.Model"
     Thought -> Identity
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
+    Link -> Thought [label="  *"]
     DisableToastNotification -> Identity
     EnableToastNotification -> DisableToastNotification [label="  *"]
 }
@@ -178,6 +179,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
             .JoinSuccessors(ThoughtText.RoleThought, Condition.WhereIsEmpty(ThoughtText.QueryIsCurrent)
             )
             ;
+        public static Query QueryNeighbors = new Query()
+            .JoinSuccessors(Link.RoleThoughts)
+            .JoinPredecessors(Link.RoleThoughts)
+            ;
 
         // Predicates
 
@@ -191,6 +196,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Results
         private Result<ThoughtText> _text;
+        private Result<Thought> _neighbors;
 
         // Business constructor
         public Thought(
@@ -213,6 +219,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         private void InitializeResults()
         {
             _text = new Result<ThoughtText>(this, QueryText);
+            _neighbors = new Result<Thought>(this, QueryNeighbors);
         }
 
         // Predecessor access
@@ -226,6 +233,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
 
         // Query result access
+        public IEnumerable<Thought> Neighbors
+        {
+            get { return _neighbors; }
+        }
 
         // Mutable property access
         public Disputable<string> Text
@@ -353,6 +364,101 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             get { return _value; }
         }
+
+        // Query result access
+
+        // Mutable property access
+
+    }
+    
+    public partial class Link : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				Link newFact = new Link(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				Link fact = (Link)obj;
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.Link", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+        public static Role RoleThoughts = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"thoughts",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Thought", 1),
+			false));
+
+        // Queries
+
+        // Predicates
+
+        // Predecessors
+        private PredecessorList<Thought> _thoughts;
+
+        // Fields
+
+        // Results
+
+        // Business constructor
+        public Link(
+            IEnumerable<Thought> thoughts
+            )
+        {
+            InitializeResults();
+            _thoughts = new PredecessorList<Thought>(this, RoleThoughts, thoughts);
+        }
+
+        // Hydration constructor
+        private Link(FactMemento memento)
+        {
+            InitializeResults();
+            _thoughts = new PredecessorList<Thought>(this, RoleThoughts, memento);
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+        }
+
+        // Predecessor access
+        public IEnumerable<Thought> Thoughts
+        {
+            get { return _thoughts; }
+        }
+     
+        // Field access
 
         // Query result access
 
@@ -581,6 +687,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Thought._correspondenceFactType,
 				Thought.QueryText.QueryDefinition);
+			community.AddQuery(
+				Thought._correspondenceFactType,
+				Thought.QueryNeighbors.QueryDefinition);
 			community.AddType(
 				ThoughtText._correspondenceFactType,
 				new ThoughtText.CorrespondenceFactFactory(fieldSerializerByType),
@@ -588,6 +697,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				ThoughtText._correspondenceFactType,
 				ThoughtText.QueryIsCurrent.QueryDefinition);
+			community.AddType(
+				Link._correspondenceFactType,
+				new Link.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { Link._correspondenceFactType }));
 			community.AddType(
 				DisableToastNotification._correspondenceFactType,
 				new DisableToastNotification.CorrespondenceFactFactory(fieldSerializerByType),

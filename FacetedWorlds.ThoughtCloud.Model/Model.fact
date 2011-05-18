@@ -18,6 +18,17 @@ key:
 
 mutable:
 	string text;
+
+query:
+	Thought* neighbors {
+		Link l : l.thoughts = this
+		Thought t : l.thoughts = t
+	}
+}
+
+fact Link {
+key:
+	Thought* thoughts;
 }
 
 fact DisableToastNotification {

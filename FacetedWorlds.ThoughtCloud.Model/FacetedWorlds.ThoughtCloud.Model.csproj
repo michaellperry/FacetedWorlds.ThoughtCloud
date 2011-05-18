@@ -67,6 +67,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Identity.cs" />
+    <Compile Include="Thought.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Model.fact" />

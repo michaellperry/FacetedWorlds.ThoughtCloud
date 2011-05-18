@@ -25,7 +25,7 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
 
             _identity = _community.AddFact(new Identity("mike"));
             Thought thought = _community.AddFact(new Thought(_identity));
-            _cloudViewModel = new CloudViewModel(thought);
+            _cloudViewModel = new CloudViewModel(_identity, thought);
         }
 
         [TestMethod]
@@ -41,6 +41,13 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
             ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
             thought.Text = "New thought";
             Assert.AreEqual("New thought", thought.Text);
+        }
+
+        [TestMethod]
+        public void CanCreateANewThought()
+        {
+            _cloudViewModel.NewThought.Execute(null);
+            Assert.AreEqual(2, _cloudViewModel.Thoughts.Count());
         }
 
         [TestMethod]
