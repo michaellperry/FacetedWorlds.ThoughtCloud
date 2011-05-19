@@ -9,6 +9,16 @@ query:
         DisableToastNotification d : d.identity = this
             where not d.isReenabled
     }
+
+	Cloud* clouds {
+		Cloud c : c.creator = this
+	}
+}
+
+fact Cloud {
+key:
+	unique;
+	Identity creator;
 }
 
 fact Thought {

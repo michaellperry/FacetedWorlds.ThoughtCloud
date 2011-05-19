@@ -11,6 +11,7 @@ using System.IO;
 digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
+    Cloud -> Identity
     Thought -> Identity
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
@@ -73,6 +74,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
             .JoinSuccessors(DisableToastNotification.RoleIdentity, Condition.WhereIsEmpty(DisableToastNotification.QueryIsReenabled)
             )
             ;
+        public static Query QueryClouds = new Query()
+            .JoinSuccessors(Cloud.RoleCreator)
+            ;
 
         // Predicates
 
@@ -83,6 +87,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Results
         private Result<DisableToastNotification> _isToastNotificationDisabled;
+        private Result<Cloud> _clouds;
 
         // Business constructor
         public Identity(
@@ -103,6 +108,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         private void InitializeResults()
         {
             _isToastNotificationDisabled = new Result<DisableToastNotification>(this, QueryIsToastNotificationDisabled);
+            _clouds = new Result<Cloud>(this, QueryClouds);
         }
 
         // Predecessor access
@@ -118,6 +124,113 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             get { return _isToastNotificationDisabled; }
         }
+        public IEnumerable<Cloud> Clouds
+        {
+            get { return _clouds; }
+        }
+
+        // Mutable property access
+
+    }
+    
+    public partial class Cloud : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				Cloud newFact = new Cloud(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+						newFact._unique = (Guid)_fieldSerializerByType[typeof(Guid)].ReadData(output);
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				Cloud fact = (Cloud)obj;
+				_fieldSerializerByType[typeof(Guid)].WriteData(output, fact._unique);
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.Cloud", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+        public static Role RoleCreator = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"creator",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
+			false));
+
+        // Queries
+
+        // Predicates
+
+        // Predecessors
+        private PredecessorObj<Identity> _creator;
+
+        // Unique
+        private Guid _unique;
+
+        // Fields
+
+        // Results
+
+        // Business constructor
+        public Cloud(
+            Identity creator
+            )
+        {
+            _unique = Guid.NewGuid();
+            InitializeResults();
+            _creator = new PredecessorObj<Identity>(this, RoleCreator, creator);
+        }
+
+        // Hydration constructor
+        private Cloud(FactMemento memento)
+        {
+            InitializeResults();
+            _creator = new PredecessorObj<Identity>(this, RoleCreator, memento);
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+        }
+
+        // Predecessor access
+        public Identity Creator
+        {
+            get { return _creator.Fact; }
+        }
+
+        // Field access
+		public Guid Unique { get { return _unique; } }
+
+
+        // Query result access
 
         // Mutable property access
 
@@ -680,6 +793,13 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Identity._correspondenceFactType,
 				Identity.QueryIsToastNotificationDisabled.QueryDefinition);
+			community.AddQuery(
+				Identity._correspondenceFactType,
+				Identity.QueryClouds.QueryDefinition);
+			community.AddType(
+				Cloud._correspondenceFactType,
+				new Cloud.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { Cloud._correspondenceFactType }));
 			community.AddType(
 				Thought._correspondenceFactType,
 				new Thought.CorrespondenceFactFactory(fieldSerializerByType),

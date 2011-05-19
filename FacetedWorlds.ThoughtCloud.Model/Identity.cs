@@ -1,14 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-
+﻿
 namespace FacetedWorlds.ThoughtCloud.Model
 {
     public partial class Identity
@@ -16,6 +6,11 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public Thought NewThought()
         {
             return Community.AddFact(new Thought(this));
+        }
+
+        public Cloud NewCloud()
+        {
+            return Community.AddFact(new Cloud(this));
         }
     }
 }

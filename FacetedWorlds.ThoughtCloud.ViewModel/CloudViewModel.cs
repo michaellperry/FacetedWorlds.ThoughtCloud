@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using FacetedWorlds.ThoughtCloud.Model;
 using System.Windows.Input;
+using FacetedWorlds.ThoughtCloud.Model;
 using UpdateControls.XAML;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
