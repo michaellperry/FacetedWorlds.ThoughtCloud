@@ -20,10 +20,19 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 Thought centralThought = _cloud.CentralThought;
-                return Enumerable.Repeat(new ThoughtViewModel(centralThought), 1).Union(
-                    from n in centralThought.Neighbors
-                    where n != centralThought
-                    select new ThoughtViewModel(n));
+                if (centralThought == null)
+                {
+                    return Enumerable.Repeat(new ThoughtViewModelSimulated(_cloud), 1)
+                        .OfType<ThoughtViewModel>();
+                }
+                else
+                {
+                    return Enumerable.Repeat(new ThoughtViewModelActual(centralThought), 1).Union(
+                        from n in centralThought.Neighbors
+                        where n != centralThought
+                        select new ThoughtViewModelActual(n))
+                        .OfType<ThoughtViewModel>();
+                }
             }
         }
 
@@ -35,6 +44,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 {
                     Thought thought = _cloud.NewThought();
                     Thought centralThought = _cloud.CentralThought;
+                    if (centralThought == null)
+                    {
+                        centralThought = _cloud.NewThought();
+                        _cloud.CentralThought = centralThought;
+                    }
                     centralThought.LinkTo(thought);
                 });
             }

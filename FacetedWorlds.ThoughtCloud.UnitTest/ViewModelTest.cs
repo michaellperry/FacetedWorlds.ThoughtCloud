@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using FacetedWorlds.ThoughtCloud.Model;
+using FacetedWorlds.ThoughtCloud.ViewModel;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UpdateControls.Correspondence;
 using UpdateControls.Correspondence.Memory;
-using FacetedWorlds.ThoughtCloud.Model;
-using FacetedWorlds.ThoughtCloud.ViewModel;
 
 namespace FacetedWorlds.ThoughtCloud.UnitTest
 {
@@ -25,8 +23,6 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
 
             _identity = _community.AddFact(new Identity("mike"));
             Cloud cloud = _community.AddFact(new Cloud(_identity));
-            Thought thought = _community.AddFact(new Thought(cloud));
-            cloud.CentralThought = thought;
             _cloudViewModel = new CloudViewModel(cloud);
         }
 
@@ -42,6 +38,7 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
         {
             ThoughtViewModel thought = _cloudViewModel.Thoughts.Single();
             thought.Text = "New thought";
+            thought = _cloudViewModel.Thoughts.Single();
             Assert.AreEqual("New thought", thought.Text);
         }
 
