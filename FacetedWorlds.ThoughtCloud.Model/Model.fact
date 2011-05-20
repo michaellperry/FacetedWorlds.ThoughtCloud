@@ -19,13 +19,15 @@ fact Cloud {
 key:
 	unique;
 	Identity creator;
+
+mutable:
 	Thought centralThought;
 }
 
 fact Thought {
 key:
 	unique;
-    Identity creator;
+	Cloud cloud;
 
 mutable:
 	string text;

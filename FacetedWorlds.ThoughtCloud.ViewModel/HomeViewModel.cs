@@ -32,8 +32,9 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 return MakeCommand
                     .Do(delegate
                     {
-                        Thought thought = _identity.NewThought();
-                        _identity.NewCloud(thought);
+                        Cloud cloud = _identity.NewCloud();
+                        Thought thought = cloud.NewThought();
+                        cloud.CentralThought = thought;
                     });
             }
         }

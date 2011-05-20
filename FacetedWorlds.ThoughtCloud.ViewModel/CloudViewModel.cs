@@ -19,9 +19,10 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         {
             get
             {
-                return Enumerable.Repeat(new ThoughtViewModel(_cloud.CentralThought), 1).Union(
-                    from n in _cloud.CentralThought.Neighbors
-                    where n != _cloud.CentralThought
+                Thought centralThought = _cloud.CentralThought;
+                return Enumerable.Repeat(new ThoughtViewModel(centralThought), 1).Union(
+                    from n in centralThought.Neighbors
+                    where n != centralThought
                     select new ThoughtViewModel(n));
             }
         }
@@ -32,8 +33,9 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             {
                 return MakeCommand.Do(() =>
                 {
-                    Thought thought = _cloud.Creator.NewThought();
-                    _cloud.CentralThought.LinkTo(thought);
+                    Thought thought = _cloud.NewThought();
+                    Thought centralThought = _cloud.CentralThought;
+                    centralThought.LinkTo(thought);
                 });
             }
         }

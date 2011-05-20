@@ -20,10 +20,5 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get { return _thought.Text.Value ?? "My thought"; }
             set { _thought.Text = value; }
         }
-
-        public string HadBy
-        {
-            get { return _thought.Creator.AnonymousId; }
-        }
     }
 }

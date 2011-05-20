@@ -12,8 +12,10 @@ digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
     Cloud -> Identity
-    Cloud -> Thought
-    Thought -> Identity
+    CloudCentralThought -> Cloud
+    CloudCentralThought -> CloudCentralThought [label="  *"]
+    CloudCentralThought -> Thought
+    Thought -> Cloud
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
     Link -> Thought [label="  *"]
@@ -184,19 +186,17 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			"creator",
 			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
 			false));
-        public static Role RoleCentralThought = new Role(new RoleMemento(
-			_correspondenceFactType,
-			"centralThought",
-			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Thought", 1),
-			false));
 
         // Queries
+        public static Query QueryCentralThought = new Query()
+            .JoinSuccessors(CloudCentralThought.RoleCloud, Condition.WhereIsEmpty(CloudCentralThought.QueryIsCurrent)
+            )
+            ;
 
         // Predicates
 
         // Predecessors
         private PredecessorObj<Identity> _creator;
-        private PredecessorObj<Thought> _centralThought;
 
         // Unique
         private Guid _unique;
@@ -204,17 +204,16 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Fields
 
         // Results
+        private Result<CloudCentralThought> _centralThought;
 
         // Business constructor
         public Cloud(
             Identity creator
-            ,Thought centralThought
             )
         {
             _unique = Guid.NewGuid();
             InitializeResults();
             _creator = new PredecessorObj<Identity>(this, RoleCreator, creator);
-            _centralThought = new PredecessorObj<Thought>(this, RoleCentralThought, centralThought);
         }
 
         // Hydration constructor
@@ -222,7 +221,134 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             InitializeResults();
             _creator = new PredecessorObj<Identity>(this, RoleCreator, memento);
-            _centralThought = new PredecessorObj<Thought>(this, RoleCentralThought, memento);
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+            _centralThought = new Result<CloudCentralThought>(this, QueryCentralThought);
+        }
+
+        // Predecessor access
+        public Identity Creator
+        {
+            get { return _creator.Fact; }
+        }
+
+        // Field access
+		public Guid Unique { get { return _unique; } }
+
+
+        // Query result access
+
+        // Mutable property access
+
+        public Disputable<Thought> CentralThought
+        {
+            get { return _centralThought.Select(fact => fact.Value).AsDisputable(); }
+			set
+			{
+				Community.AddFact(new CloudCentralThought(this, _centralThought, value.Value));
+			}
+        }
+    }
+    
+    public partial class CloudCentralThought : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				CloudCentralThought newFact = new CloudCentralThought(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				CloudCentralThought fact = (CloudCentralThought)obj;
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.CloudCentralThought", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+        public static Role RoleCloud = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"cloud",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Cloud", 1),
+			false));
+        public static Role RolePrior = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"prior",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.CloudCentralThought", 1),
+			false));
+        public static Role RoleValue = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"value",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Thought", 1),
+			false));
+
+        // Queries
+        public static Query QueryIsCurrent = new Query()
+            .JoinSuccessors(CloudCentralThought.RolePrior)
+            ;
+
+        // Predicates
+        public static Condition IsCurrent = Condition.WhereIsEmpty(QueryIsCurrent);
+
+        // Predecessors
+        private PredecessorObj<Cloud> _cloud;
+        private PredecessorList<CloudCentralThought> _prior;
+        private PredecessorObj<Thought> _value;
+
+        // Fields
+
+        // Results
+
+        // Business constructor
+        public CloudCentralThought(
+            Cloud cloud
+            ,IEnumerable<CloudCentralThought> prior
+            ,Thought value
+            )
+        {
+            InitializeResults();
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, cloud);
+            _prior = new PredecessorList<CloudCentralThought>(this, RolePrior, prior);
+            _value = new PredecessorObj<Thought>(this, RoleValue, value);
+        }
+
+        // Hydration constructor
+        private CloudCentralThought(FactMemento memento)
+        {
+            InitializeResults();
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, memento);
+            _prior = new PredecessorList<CloudCentralThought>(this, RolePrior, memento);
+            _value = new PredecessorObj<Thought>(this, RoleValue, memento);
         }
 
         // Result initializer
@@ -231,18 +357,20 @@ namespace FacetedWorlds.ThoughtCloud.Model
         }
 
         // Predecessor access
-        public Identity Creator
+        public Cloud Cloud
         {
-            get { return _creator.Fact; }
+            get { return _cloud.Fact; }
         }
-        public Thought CentralThought
+        public IEnumerable<CloudCentralThought> Prior
         {
-            get { return _centralThought.Fact; }
+            get { return _prior; }
+        }
+             public Thought Value
+        {
+            get { return _value.Fact; }
         }
 
         // Field access
-		public Guid Unique { get { return _unique; } }
-
 
         // Query result access
 
@@ -295,10 +423,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
 		}
 
         // Roles
-        public static Role RoleCreator = new Role(new RoleMemento(
+        public static Role RoleCloud = new Role(new RoleMemento(
 			_correspondenceFactType,
-			"creator",
-			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
+			"cloud",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Cloud", 1),
 			false));
 
         // Queries
@@ -314,7 +442,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Predicates
 
         // Predecessors
-        private PredecessorObj<Identity> _creator;
+        private PredecessorObj<Cloud> _cloud;
 
         // Unique
         private Guid _unique;
@@ -327,19 +455,19 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Business constructor
         public Thought(
-            Identity creator
+            Cloud cloud
             )
         {
             _unique = Guid.NewGuid();
             InitializeResults();
-            _creator = new PredecessorObj<Identity>(this, RoleCreator, creator);
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, cloud);
         }
 
         // Hydration constructor
         private Thought(FactMemento memento)
         {
             InitializeResults();
-            _creator = new PredecessorObj<Identity>(this, RoleCreator, memento);
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, memento);
         }
 
         // Result initializer
@@ -350,9 +478,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
         }
 
         // Predecessor access
-        public Identity Creator
+        public Cloud Cloud
         {
-            get { return _creator.Fact; }
+            get { return _cloud.Fact; }
         }
 
         // Field access
@@ -814,6 +942,16 @@ namespace FacetedWorlds.ThoughtCloud.Model
 				Cloud._correspondenceFactType,
 				new Cloud.CorrespondenceFactFactory(fieldSerializerByType),
 				new FactMetadata(new List<CorrespondenceFactType> { Cloud._correspondenceFactType }));
+			community.AddQuery(
+				Cloud._correspondenceFactType,
+				Cloud.QueryCentralThought.QueryDefinition);
+			community.AddType(
+				CloudCentralThought._correspondenceFactType,
+				new CloudCentralThought.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { CloudCentralThought._correspondenceFactType }));
+			community.AddQuery(
+				CloudCentralThought._correspondenceFactType,
+				CloudCentralThought.QueryIsCurrent.QueryDefinition);
 			community.AddType(
 				Thought._correspondenceFactType,
 				new Thought.CorrespondenceFactFactory(fieldSerializerByType),
