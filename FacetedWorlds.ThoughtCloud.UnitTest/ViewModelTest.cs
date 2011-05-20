@@ -25,7 +25,8 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
 
             _identity = _community.AddFact(new Identity("mike"));
             Thought thought = _community.AddFact(new Thought(_identity));
-            _cloudViewModel = new CloudViewModel(_identity, thought);
+            Cloud cloud = _community.AddFact(new Cloud(_identity, thought));
+            _cloudViewModel = new CloudViewModel(cloud);
         }
 
         [TestMethod]

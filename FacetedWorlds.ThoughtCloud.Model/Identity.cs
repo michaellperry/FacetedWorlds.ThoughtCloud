@@ -8,9 +8,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
             return Community.AddFact(new Thought(this));
         }
 
-        public Cloud NewCloud()
+        public Cloud NewCloud(Thought thought)
         {
-            return Community.AddFact(new Cloud(this));
+            return Community.AddFact(new Cloud(this, thought));
         }
     }
 }

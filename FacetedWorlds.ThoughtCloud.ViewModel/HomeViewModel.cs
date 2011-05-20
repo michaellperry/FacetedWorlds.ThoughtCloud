@@ -21,7 +21,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             {
                 return
                     from c in _identity.Clouds
-                    select new CloudViewModel(_identity, null);
+                    select new CloudViewModel(c);
             }
         }
 
@@ -30,7 +30,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 return MakeCommand
-                    .Do(() => _identity.NewCloud());
+                    .Do(delegate
+                    {
+                        Thought thought = _identity.NewThought();
+                        _identity.NewCloud(thought);
+                    });
             }
         }
     }

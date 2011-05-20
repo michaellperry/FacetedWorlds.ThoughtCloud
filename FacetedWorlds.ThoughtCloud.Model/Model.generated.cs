@@ -12,6 +12,7 @@ digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
     Cloud -> Identity
+    Cloud -> Thought
     Thought -> Identity
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
@@ -183,6 +184,11 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			"creator",
 			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
 			false));
+        public static Role RoleCentralThought = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"centralThought",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Thought", 1),
+			false));
 
         // Queries
 
@@ -190,6 +196,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Predecessors
         private PredecessorObj<Identity> _creator;
+        private PredecessorObj<Thought> _centralThought;
 
         // Unique
         private Guid _unique;
@@ -201,11 +208,13 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Business constructor
         public Cloud(
             Identity creator
+            ,Thought centralThought
             )
         {
             _unique = Guid.NewGuid();
             InitializeResults();
             _creator = new PredecessorObj<Identity>(this, RoleCreator, creator);
+            _centralThought = new PredecessorObj<Thought>(this, RoleCentralThought, centralThought);
         }
 
         // Hydration constructor
@@ -213,6 +222,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             InitializeResults();
             _creator = new PredecessorObj<Identity>(this, RoleCreator, memento);
+            _centralThought = new PredecessorObj<Thought>(this, RoleCentralThought, memento);
         }
 
         // Result initializer
@@ -224,6 +234,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public Identity Creator
         {
             get { return _creator.Fact; }
+        }
+        public Thought CentralThought
+        {
+            get { return _centralThought.Fact; }
         }
 
         // Field access

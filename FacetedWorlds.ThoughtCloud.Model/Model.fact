@@ -19,6 +19,7 @@ fact Cloud {
 key:
 	unique;
 	Identity creator;
+	Thought centralThought;
 }
 
 fact Thought {

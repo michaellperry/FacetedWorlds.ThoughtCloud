@@ -8,22 +8,20 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
     public class CloudViewModel
     {
-        private Identity _identity;
-        private Thought _centralThought;
-        
-        public CloudViewModel(Identity identity, Thought centralThought)
+        private Cloud _cloud;
+
+        public CloudViewModel(Cloud cloud)
         {
-            _identity = identity;
-            _centralThought = centralThought;
+            _cloud = cloud;
         }
 
         public IEnumerable<ThoughtViewModel> Thoughts
         {
             get
             {
-                return Enumerable.Repeat(new ThoughtViewModel(_centralThought), 1).Union(
-                    from n in _centralThought.Neighbors
-                    where n != _centralThought
+                return Enumerable.Repeat(new ThoughtViewModel(_cloud.CentralThought), 1).Union(
+                    from n in _cloud.CentralThought.Neighbors
+                    where n != _cloud.CentralThought
                     select new ThoughtViewModel(n));
             }
         }
@@ -32,7 +30,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         {
             get
             {
-                return MakeCommand.Do(() => _centralThought.LinkTo(_identity.NewThought()));
+                return MakeCommand.Do(() =>
+                {
+                    Thought thought = _cloud.Creator.NewThought();
+                    _cloud.CentralThought.LinkTo(thought);
+                });
             }
         }
     }
