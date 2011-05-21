@@ -12,49 +12,46 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
     [TestClass]
     public class ModelTest : SilverlightTest
     {
-        private Community _community;
-        private Community _otherCommunity;
-        private Identity _identity;
-        private Identity _otherIdentity;
+        private Community _mikesCommunity;
+        private Community _russellsCommunity;
+        private Identity _mikesIdentity;
+        private Identity _russellsIdentity;
 
         [TestInitialize]
         public void Initialize()
         {
             var sharedCommunication = new MemoryCommunicationStrategy();
-            _community = new Community(new MemoryStorageStrategy())
+            _mikesCommunity = new Community(new MemoryStorageStrategy())
                 .AddCommunicationStrategy(sharedCommunication)
                 .Register<Model.CorrespondenceModel>()
-                .Subscribe(() => _identity)
+                .Subscribe(() => _mikesIdentity)
 				;
-            _otherCommunity = new Community(new MemoryStorageStrategy())
+            _russellsCommunity = new Community(new MemoryStorageStrategy())
                 .AddCommunicationStrategy(sharedCommunication)
                 .Register<Model.CorrespondenceModel>()
-                .Subscribe(() => _otherIdentity)
+                .Subscribe(() => _russellsIdentity)
 				;
 
-            _identity = _community.AddFact(new Identity("mike"));
-            _otherIdentity = _otherCommunity.AddFact(new Identity("mike"));
+            _mikesIdentity = _mikesCommunity.AddFact(new Identity("mike"));
+            _russellsIdentity = _russellsCommunity.AddFact(new Identity("russell"));
 		}
 
-        //[TestMethod]
-        //public void ThroughtIsInitiallyNull()
-        //{
-        //    Assert.IsNull(_otherIdentity.Me.Value);
-        //}
+        [TestMethod]
+        public void MikeCanShareCloudWithRussell()
+        {
+            Cloud cloud = _mikesIdentity.NewCloud();
+            Identity russell = _mikesCommunity.AddFact(new Identity("russell"));
+            russell.NewShare(cloud);
 
-        //[TestMethod]
-        //public void OtherDeviceReceivesThougths()
-        //{
-        //    _identity.Me = _community.AddFact(new Thought());
-        //
-        //    Synchronize();
-        //
-        //    Assert.IsNotNull(_otherIdentity.Me.Value);
-        //}
+            Synchronize();
+
+            Assert.AreEqual(1, _russellsIdentity.SharedClouds.Count());
+            Assert.AreEqual("mike", _russellsIdentity.SharedClouds.Single().Creator.AnonymousId);
+        }
 
         private void Synchronize()
         {
-            while (_community.Synchronize() || _otherCommunity.Synchronize()) ;
+            while (_mikesCommunity.Synchronize() || _russellsCommunity.Synchronize()) ;
         }
 	}
 }

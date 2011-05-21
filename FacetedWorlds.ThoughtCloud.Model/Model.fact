@@ -13,6 +13,11 @@ query:
 	Cloud* clouds {
 		Cloud c : c.creator = this
 	}
+
+	Cloud* sharedClouds {
+		Share s : s.recipient = this
+		Cloud c : s.cloud = c
+	}
 }
 
 fact Cloud {
@@ -22,6 +27,12 @@ key:
 
 mutable:
 	Thought centralThought;
+}
+
+fact Share {
+key:
+	publish Identity recipient;
+	Cloud cloud;
 }
 
 fact Thought {

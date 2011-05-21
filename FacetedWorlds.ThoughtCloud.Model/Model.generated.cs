@@ -15,6 +15,8 @@ digraph "FacetedWorlds.ThoughtCloud.Model"
     CloudCentralThought -> Cloud
     CloudCentralThought -> CloudCentralThought [label="  *"]
     CloudCentralThought -> Thought
+    Share -> Identity [color="red"]
+    Share -> Cloud
     Thought -> Cloud
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
@@ -80,6 +82,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public static Query QueryClouds = new Query()
             .JoinSuccessors(Cloud.RoleCreator)
             ;
+        public static Query QuerySharedClouds = new Query()
+            .JoinSuccessors(Share.RoleRecipient)
+            .JoinPredecessors(Share.RoleCloud)
+            ;
 
         // Predicates
 
@@ -91,6 +97,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Results
         private Result<DisableToastNotification> _isToastNotificationDisabled;
         private Result<Cloud> _clouds;
+        private Result<Cloud> _sharedClouds;
 
         // Business constructor
         public Identity(
@@ -112,6 +119,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             _isToastNotificationDisabled = new Result<DisableToastNotification>(this, QueryIsToastNotificationDisabled);
             _clouds = new Result<Cloud>(this, QueryClouds);
+            _sharedClouds = new Result<Cloud>(this, QuerySharedClouds);
         }
 
         // Predecessor access
@@ -130,6 +138,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public IEnumerable<Cloud> Clouds
         {
             get { return _clouds; }
+        }
+        public IEnumerable<Cloud> SharedClouds
+        {
+            get { return _sharedClouds; }
         }
 
         // Mutable property access
@@ -368,6 +380,114 @@ namespace FacetedWorlds.ThoughtCloud.Model
              public Thought Value
         {
             get { return _value.Fact; }
+        }
+
+        // Field access
+
+        // Query result access
+
+        // Mutable property access
+
+    }
+    
+    public partial class Share : CorrespondenceFact
+    {
+		// Factory
+		internal class CorrespondenceFactFactory : ICorrespondenceFactFactory
+		{
+			private IDictionary<Type, IFieldSerializer> _fieldSerializerByType;
+
+			public CorrespondenceFactFactory(IDictionary<Type, IFieldSerializer> fieldSerializerByType)
+			{
+				_fieldSerializerByType = fieldSerializerByType;
+			}
+
+			public CorrespondenceFact CreateFact(FactMemento memento)
+			{
+				Share newFact = new Share(memento);
+
+				// Create a memory stream from the memento data.
+				using (MemoryStream data = new MemoryStream(memento.Data))
+				{
+					using (BinaryReader output = new BinaryReader(data))
+					{
+					}
+				}
+
+				return newFact;
+			}
+
+			public void WriteFactData(CorrespondenceFact obj, BinaryWriter output)
+			{
+				Share fact = (Share)obj;
+			}
+		}
+
+		// Type
+		internal static CorrespondenceFactType _correspondenceFactType = new CorrespondenceFactType(
+			"FacetedWorlds.ThoughtCloud.Model.Share", 1);
+
+		protected override CorrespondenceFactType GetCorrespondenceFactType()
+		{
+			return _correspondenceFactType;
+		}
+
+        // Roles
+        public static Role RoleRecipient = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"recipient",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Identity", 1),
+			true));
+        public static Role RoleCloud = new Role(new RoleMemento(
+			_correspondenceFactType,
+			"cloud",
+			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Cloud", 1),
+			false));
+
+        // Queries
+
+        // Predicates
+
+        // Predecessors
+        private PredecessorObj<Identity> _recipient;
+        private PredecessorObj<Cloud> _cloud;
+
+        // Fields
+
+        // Results
+
+        // Business constructor
+        public Share(
+            Identity recipient
+            ,Cloud cloud
+            )
+        {
+            InitializeResults();
+            _recipient = new PredecessorObj<Identity>(this, RoleRecipient, recipient);
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, cloud);
+        }
+
+        // Hydration constructor
+        private Share(FactMemento memento)
+        {
+            InitializeResults();
+            _recipient = new PredecessorObj<Identity>(this, RoleRecipient, memento);
+            _cloud = new PredecessorObj<Cloud>(this, RoleCloud, memento);
+        }
+
+        // Result initializer
+        private void InitializeResults()
+        {
+        }
+
+        // Predecessor access
+        public Identity Recipient
+        {
+            get { return _recipient.Fact; }
+        }
+        public Cloud Cloud
+        {
+            get { return _cloud.Fact; }
         }
 
         // Field access
@@ -938,6 +1058,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Identity._correspondenceFactType,
 				Identity.QueryClouds.QueryDefinition);
+			community.AddQuery(
+				Identity._correspondenceFactType,
+				Identity.QuerySharedClouds.QueryDefinition);
 			community.AddType(
 				Cloud._correspondenceFactType,
 				new Cloud.CorrespondenceFactFactory(fieldSerializerByType),
@@ -952,6 +1075,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				CloudCentralThought._correspondenceFactType,
 				CloudCentralThought.QueryIsCurrent.QueryDefinition);
+			community.AddType(
+				Share._correspondenceFactType,
+				new Share.CorrespondenceFactFactory(fieldSerializerByType),
+				new FactMetadata(new List<CorrespondenceFactType> { Share._correspondenceFactType }));
 			community.AddType(
 				Thought._correspondenceFactType,
 				new Thought.CorrespondenceFactFactory(fieldSerializerByType),
