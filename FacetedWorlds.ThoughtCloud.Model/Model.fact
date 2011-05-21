@@ -26,7 +26,7 @@ key:
 	Identity creator;
 
 mutable:
-	Thought centralThought;
+	publish Thought centralThought;
 }
 
 fact Share {
@@ -38,7 +38,7 @@ key:
 fact Thought {
 key:
 	unique;
-	Cloud cloud;
+	publish Cloud cloud;
 
 mutable:
 	string text;

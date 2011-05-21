@@ -12,12 +12,12 @@ digraph "FacetedWorlds.ThoughtCloud.Model"
 {
     rankdir=BT
     Cloud -> Identity
-    CloudCentralThought -> Cloud
+    CloudCentralThought -> Cloud [color="red"]
     CloudCentralThought -> CloudCentralThought [label="  *"]
     CloudCentralThought -> Thought
     Share -> Identity [color="red"]
     Share -> Cloud
-    Thought -> Cloud
+    Thought -> Cloud [color="red"]
     ThoughtText -> Thought
     ThoughtText -> ThoughtText [label="  *"]
     Link -> Thought [label="  *"]
@@ -312,7 +312,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			_correspondenceFactType,
 			"cloud",
 			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Cloud", 1),
-			false));
+			true));
         public static Role RolePrior = new Role(new RoleMemento(
 			_correspondenceFactType,
 			"prior",
@@ -547,7 +547,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			_correspondenceFactType,
 			"cloud",
 			new CorrespondenceFactType("FacetedWorlds.ThoughtCloud.Model.Cloud", 1),
-			false));
+			true));
 
         // Queries
         public static Query QueryText = new Query()
