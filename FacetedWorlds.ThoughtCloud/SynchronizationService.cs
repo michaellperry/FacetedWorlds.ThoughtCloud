@@ -26,6 +26,8 @@ namespace FacetedWorlds.ThoughtCloud
                 .AddAsynchronousCommunicationStrategy(new POXAsynchronousCommunicationStrategy(configurationProvider))
                 .Register<CorrespondenceModel>()
                 .Subscribe(() => _navigationModel.CurrentUser)
+                .Subscribe(() => _navigationModel.CurrentUser.SharedClouds)
+                .Subscribe(() => _navigationModel.CurrentUser.Clouds)
                 ;
 
             // Synchronize whenever the user has something to send.
