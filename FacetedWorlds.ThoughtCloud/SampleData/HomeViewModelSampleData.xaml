@@ -1,0 +1,14 @@
+<FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel xmlns:FacetedWorlds_ThoughtCloud_ViewModel="clr-namespace:FacetedWorlds.ThoughtCloud.ViewModel;assembly=FacetedWorlds.ThoughtCloud.ViewModel">
+	<FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.Clouds>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Cras aliquam duis"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Nunc integer maecenas quisque"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Praesent vestibulum"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Aenean adipiscing"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Class nam amet"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Ante accumsan sed dis bibendum"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Curabitur parturient arcu diam eget"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Phasellus dictumst"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Est vivamus vestibulum hac"/>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Eleifend consequat curae mauris"/>
+	</FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.Clouds>
+</FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel>

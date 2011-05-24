@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Input;
 using FacetedWorlds.ThoughtCloud.Model;
 using UpdateControls.XAML;
+using System;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
@@ -15,13 +16,13 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             _identity = identity;
         }
 
-        public IEnumerable<CloudViewModel> Clouds
+        public IEnumerable<CloudSummaryViewModel> Clouds
         {
             get
             {
                 return
                     from c in _identity.Clouds
-                    select new CloudViewModel(c);
+                    select new CloudSummaryViewModel(c);
             }
         }
 

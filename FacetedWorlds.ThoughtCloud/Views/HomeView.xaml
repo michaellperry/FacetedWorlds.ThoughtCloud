@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="FacetedWorlds.ThoughtCloud.Views.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+	<UserControl.Resources>
+		<DataTemplate x:Key="CloudSummaryViewModelTemplate">
+			<StackPanel>
+				<TextBlock Text="{Binding Text}"/>
+			</StackPanel>
+		</DataTemplate>
+	</UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="White" d:DataContext="{d:DesignData /SampleData/HomeViewModelSampleData.xaml}">
+    	<ListBox ItemTemplate="{StaticResource CloudSummaryViewModelTemplate}" ItemsSource="{Binding Clouds}" Margin="8,8,192,8"/>
+    	<Button Content="Add Cloud" HorizontalAlignment="Right" Margin="0,13,98,0" VerticalAlignment="Top" Width="75" Command="{Binding AddCloud}"/>
+
+    </Grid>
+</UserControl>

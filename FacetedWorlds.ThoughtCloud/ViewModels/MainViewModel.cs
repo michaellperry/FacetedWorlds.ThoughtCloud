@@ -5,6 +5,8 @@ using System.Windows.Input;
 using FacetedWorlds.ThoughtCloud.Models;
 using UpdateControls.Correspondence;
 using UpdateControls.XAML;
+using FacetedWorlds.ThoughtCloud.ViewModel;
+using FacetedWorlds.ThoughtCloud.Model;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModels
 {
@@ -24,6 +26,16 @@ namespace FacetedWorlds.ThoughtCloud.ViewModels
         public bool Synchronizing
         {
             get { return _synhronizationService.Synchronizing; }
+        }
+
+        public HomeViewModel Home
+        {
+            get
+            {
+                return _navigationModel.CurrentUser == null
+                    ? null
+                    : new HomeViewModel(_navigationModel.CurrentUser);
+            }
         }
     }
 }
