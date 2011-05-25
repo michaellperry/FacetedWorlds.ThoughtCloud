@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using FacetedWorlds.ThoughtCloud.Models;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 using UpdateControls.Correspondence;
 using UpdateControls.XAML;
 using FacetedWorlds.ThoughtCloud.ViewModel;
@@ -49,7 +49,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModels
             {
                 return _navigationModel.CurrentUser == null
                     ? null
-                    : new HomeViewModel(_navigationModel.CurrentUser);
+                    : new HomeViewModel(_navigationModel.CurrentUser, _navigationModel);
             }
         }
     }

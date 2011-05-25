@@ -4,6 +4,7 @@ using FacetedWorlds.ThoughtCloud.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UpdateControls.Correspondence;
 using UpdateControls.Correspondence.Memory;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 
 namespace FacetedWorlds.ThoughtCloud.UnitTest
 {
@@ -21,7 +22,7 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
                 .Register<CorrespondenceModel>();
 
             _identity = _community.AddFact(new Identity("mike"));
-            _viewModel = new HomeViewModel(_identity);
+            _viewModel = new HomeViewModel(_identity, new NavigationModel());
         }
 
         [TestMethod]

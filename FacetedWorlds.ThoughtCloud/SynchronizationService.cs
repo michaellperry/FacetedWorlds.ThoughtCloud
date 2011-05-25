@@ -4,8 +4,8 @@ using System.Linq;
 using UpdateControls.Correspondence;
 using UpdateControls.Correspondence.IsolatedStorage;
 using UpdateControls.Correspondence.POXClient;
-using FacetedWorlds.ThoughtCloud.Models;
 using FacetedWorlds.ThoughtCloud.Model;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 
 namespace FacetedWorlds.ThoughtCloud
 {

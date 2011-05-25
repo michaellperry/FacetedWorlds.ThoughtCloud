@@ -1,7 +1,6 @@
 using System.Linq;
 using UpdateControls.Fields;
 using UpdateControls.Correspondence.POXClient;
-using FacetedWorlds.ThoughtCloud.Models;
 
 namespace FacetedWorlds.ThoughtCloud
 {

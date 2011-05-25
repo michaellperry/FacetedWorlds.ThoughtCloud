@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
 using System.Linq;
-using FacetedWorlds.ThoughtCloud.Models;
 using UpdateControls.XAML;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModels
 {
