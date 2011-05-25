@@ -14,8 +14,13 @@
 	</UserControl.Resources>
     
     <Grid x:Name="LayoutRoot" Background="White" d:DataContext="{d:DesignData /SampleData/HomeViewModelSampleData.xaml}">
-    	<ListBox ItemTemplate="{StaticResource CloudSummaryViewModelTemplate}" ItemsSource="{Binding Clouds}" Margin="8,8,192,8"/>
-    	<Button Content="Add Cloud" HorizontalAlignment="Right" Margin="0,13,98,0" VerticalAlignment="Top" Width="75" Command="{Binding AddCloud}"/>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.853*"/>
+    		<RowDefinition Height="Auto"/>
+    	</Grid.RowDefinitions>
+    	<ListBox ItemTemplate="{StaticResource CloudSummaryViewModelTemplate}" ItemsSource="{Binding Clouds}" Margin="8,8,8,0" SelectedItem="{Binding SelectedCloud, Mode=TwoWay}"/>
+    	<Button Content="Add Cloud" HorizontalAlignment="Left" Margin="8,8,0,8" Width="75" Command="{Binding AddCloud}" Grid.Row="1" VerticalAlignment="Top"/>
+    	<Button Content="Open Cloud" HorizontalAlignment="Left" Margin="87,8,0,8" Grid.Row="1" Width="75" d:LayoutOverrides="Height" Command="{Binding OpenCloud}"/>
 
     </Grid>
 </UserControl>

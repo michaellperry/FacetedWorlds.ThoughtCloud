@@ -24,7 +24,8 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel.Models
 
         public void OpenCloud(Cloud cloud)
         {
-            _openClouds.Add(cloud);
+            if (!_openClouds.Contains(cloud))
+                _openClouds.Add(cloud);
         }
 
         public Cloud SelectedCloud

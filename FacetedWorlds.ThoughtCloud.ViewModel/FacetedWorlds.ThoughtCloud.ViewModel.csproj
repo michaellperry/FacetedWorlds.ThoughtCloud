@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudSummaryViewModel.cs" />
+    <Compile Include="CloudTabViewModel.cs" />
     <Compile Include="CloudViewModel.cs" />
     <Compile Include="HomeViewModel.cs" />
     <Compile Include="Models\NavigationModel.cs" />

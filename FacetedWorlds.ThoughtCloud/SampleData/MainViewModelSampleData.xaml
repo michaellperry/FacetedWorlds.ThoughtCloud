@@ -1,1 +1,73 @@
-<FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel xmlns:FacetedWorlds_ThoughtCloud_ViewModels="clr-namespace:FacetedWorlds.ThoughtCloud.ViewModels" Synchronizing="True"/>
+﻿<FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel xmlns:FacetedWorlds_ThoughtCloud_ViewModels="clr-namespace:FacetedWorlds.ThoughtCloud.ViewModels" xmlns:FacetedWorlds_ThoughtCloud_ViewModel="clr-namespace:FacetedWorlds.ThoughtCloud.ViewModel;assembly=FacetedWorlds.ThoughtCloud.ViewModel" HasError="True" LastError="Hac egestas donec" Synchronizing="False">
+	<FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel.Home>
+		<FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel>
+			<FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.Clouds>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Aliquam nam curabitur maecenas"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Cras duis"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Integer sed quisque dis vivamus"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Class aliquam aliquet curae"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Phasellus consequat"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Nunc amet"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Blandit commodo ante aenean"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Est arcu"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Vestibulum conubia convallis dignissim"/>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Cubilia diam"/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.Clouds>
+			<FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.SelectedCloud>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudSummaryViewModel Text="Eget elementum facilisis dapibus"/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel.SelectedCloud>
+		</FacetedWorlds_ThoughtCloud_ViewModel:HomeViewModel>
+	</FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel.Home>
+	<FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel.OpenClouds>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Class maecenas">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Nam">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Aliquam">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Curae">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Aenean">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Donec integer">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Mauris cras">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Sed">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Duis quisque">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+		<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel Header="Vivamus">
+			<FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+				<FacetedWorlds_ThoughtCloud_ViewModel:CloudViewModel/>
+			</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel.Content>
+		</FacetedWorlds_ThoughtCloud_ViewModel:CloudTabViewModel>
+	</FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel.OpenClouds>
+</FacetedWorlds_ThoughtCloud_ViewModels:MainViewModel>

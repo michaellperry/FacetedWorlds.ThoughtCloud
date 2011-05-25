@@ -59,7 +59,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 return MakeCommand
-                    .When(() => _navigation.OpenCloud != null)
+                    .When(() => _navigation.SelectedCloud != null)
                     .Do(() => _navigation.OpenCloud(_navigation.SelectedCloud));
             }
         }

@@ -3,27 +3,38 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:FacetedWorlds_ThoughtCloud_Views="clr-namespace:FacetedWorlds.ThoughtCloud.Views" xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" x:Class="FacetedWorlds.ThoughtCloud.MainPage"
+    xmlns:FacetedWorlds_ThoughtCloud_Views="clr-namespace:FacetedWorlds.ThoughtCloud.Views" xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:FacetedWorlds_ThoughtCloud_ValueConverters="clr-namespace:FacetedWorlds.ThoughtCloud.ValueConverters" x:Class="FacetedWorlds.ThoughtCloud.MainPage"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400"
+    d:DesignHeight="396" d:DesignWidth="593"
     >
 
 	<UserControl.Resources>
+		<FacetedWorlds_ThoughtCloud_ValueConverters:TabConverter x:Key="TabConverter"/>
 		<Itzben:VisibleWhenTrueConverter x:Key="VisibleWhenTrueConverter"/>
+		<DataTemplate x:Key="CloudTabViewModelTemplate">
+			<TextBlock Text="{Binding Header}"/>
+		</DataTemplate>
 	</UserControl.Resources>
 	<UserControl.DataContext>
 		<Binding Path="Main" Source="{StaticResource Locator}"/>
 	</UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" Background="White" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.242*"/>
+    		<ColumnDefinition Width="0.758*"/>
+    	</Grid.ColumnDefinitions>
     	<Grid.RowDefinitions>
     		<RowDefinition/>
     		<RowDefinition Height="32"/>
     	</Grid.RowDefinitions>
 
     	<FacetedWorlds_ThoughtCloud_Views:HomeView DataContext="{Binding Home}"/>
-    	<TextBlock HorizontalAlignment="Left" Margin="8,8,0,8" Grid.Row="1" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Top" Visibility="{Binding Synchronizing, Converter={StaticResource VisibleWhenTrueConverter}}"/>
-    	<TextBlock HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="1" TextWrapping="Wrap" Text="{Binding LastError}" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top" Visibility="{Binding HasError, Converter={StaticResource VisibleWhenTrueConverter}}"/>
+    	<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Top" Visibility="{Binding Synchronizing, Converter={StaticResource VisibleWhenTrueConverter}}"/>
+    	<TextBlock HorizontalAlignment="Right" Margin="0,8,8,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding LastError}" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top" Visibility="{Binding HasError, Converter={StaticResource VisibleWhenTrueConverter}}" Grid.Column="1"/>
+
+        <sdk:TabControl Grid.Column="1" Margin="8" ItemTemplate="{StaticResource CloudTabViewModelTemplate}" ItemsSource="{Binding OpenClouds, Converter={StaticResource TabConverter}}"/>
+        <sdk:GridSplitter HorizontalAlignment="Left" Width="5" Grid.Column="1"/>
 
     </Grid>
 </UserControl>
