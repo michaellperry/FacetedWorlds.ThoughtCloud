@@ -40,8 +40,6 @@ namespace FacetedWorlds.ThoughtCloud
 
             // And synchronize on startup.
             Synchronize();
-
-            _navigationModel.OpenCloud(_navigationModel.CurrentUser.Clouds.First());
         }
 
         public Community Community

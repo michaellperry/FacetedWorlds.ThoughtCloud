@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
 using FacetedWorlds.ThoughtCloud.ViewModel;
+using FacetedWorlds.ThoughtCloud.Views;
 using UpdateControls.XAML.Wrapper;
 
 namespace FacetedWorlds.ThoughtCloud.ValueConverters
@@ -80,7 +81,7 @@ namespace FacetedWorlds.ThoughtCloud.ValueConverters
         {
             IObjectInstance wrapper = item as IObjectInstance;
             CloudTabViewModel tabViewModel = wrapper.WrappedObject as CloudTabViewModel;
-            return new TabItem { Header = tabViewModel.Header, Content = new TextBlock { Text = tabViewModel.Header } };
+            return new CloudTabItem(tabViewModel);
         }
     }
 }
