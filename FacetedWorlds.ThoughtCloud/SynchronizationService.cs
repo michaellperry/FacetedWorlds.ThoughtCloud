@@ -60,5 +60,10 @@ namespace FacetedWorlds.ThoughtCloud
         {
             get { return _community.Synchronizing; }
         }
+
+        public Exception LastException
+        {
+            get { return _community.LastException; }
+        }
     }
 }

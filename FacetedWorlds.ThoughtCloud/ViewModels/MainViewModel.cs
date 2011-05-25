@@ -25,7 +25,22 @@ namespace FacetedWorlds.ThoughtCloud.ViewModels
 
         public bool Synchronizing
         {
-            get { return _synhronizationService.Synchronizing; }
+            get { return _community.Synchronizing; }
+        }
+
+        public bool HasError
+        {
+            get { return _community.LastException != null; }
+        }
+
+        public string LastError
+        {
+            get
+            {
+                return _community.LastException == null
+                    ? null
+                    : _community.LastException.Message;
+            }
         }
 
         public HomeViewModel Home
