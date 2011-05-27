@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using FacetedWorlds.ThoughtCloud.ViewModel;
 using UpdateControls;
+using UpdateControls.XAML;
 
 namespace FacetedWorlds.ThoughtCloud.Views
 {
@@ -14,7 +15,7 @@ namespace FacetedWorlds.ThoughtCloud.Views
         {
             _viewModel = viewModel;
 
-            Content = new CloudView { DataContext = _viewModel.Content };
+            Content = new CloudView { DataContext = ForView.Wrap(_viewModel.Content) };
 
             _depHeader = new Dependent(() => Header = _viewModel.Header);
             _depHeader.Invalidated += () => Deployment.Current.Dispatcher.BeginInvoke(() => _depHeader.OnGet());

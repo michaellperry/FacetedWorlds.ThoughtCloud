@@ -1,5 +1,3 @@
-using System.Linq;
-using UpdateControls.Fields;
 using UpdateControls.Correspondence.POXClient;
 
 namespace FacetedWorlds.ThoughtCloud
