@@ -1,0 +1,18 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ThoughtCloud_Presentation"
+	x:Class="ThoughtCloud_Presentation.MainPage"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<local:Earth HorizontalAlignment="Right" Height="47" Margin="0,114,121,0" VerticalAlignment="Top" Width="54"/>
+		<local:Monitor HorizontalAlignment="Left" Height="56" Margin="26,21,0,0" VerticalAlignment="Top" Width="57"/>
+		<local:Document HorizontalAlignment="Left" Margin="26,206,0,211" Width="57"/>
+		<local:Folder HorizontalAlignment="Left" Height="69" Margin="26,0,0,105" VerticalAlignment="Bottom" Width="64"/>
+		<local:Gear HorizontalAlignment="Left" Height="58" Margin="138,118,0,0" VerticalAlignment="Top" Width="73"/>
+		<local:Radio Height="62" Margin="256,114,315,0" VerticalAlignment="Top"/>
+		<local:Database HorizontalAlignment="Right" Height="62" Margin="0,0,121,112" VerticalAlignment="Bottom" Width="48"/>
+		<local:DataAccess HorizontalAlignment="Right" Margin="0,206,116,219" Width="59"/>
+	</Grid>
+</UserControl>
