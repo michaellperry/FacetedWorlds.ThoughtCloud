@@ -6,10 +6,12 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
     public class ThoughtViewModelSimulated : ThoughtViewModel
     {
-        private Cloud _cloud;
+        private readonly Cloud _cloud;
+        private readonly IThoughtContainer _container;
 
-        public ThoughtViewModelSimulated(Cloud cloud)
+        public ThoughtViewModelSimulated(Cloud cloud, IThoughtContainer container)
         {
+            _container = container;
             _cloud = cloud;
         }
 
@@ -21,6 +23,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 Thought thought = _cloud.NewThought();
                 _cloud.CentralThought = thought;
                 thought.Text = value;
+                _container.EditThought = null;
             }
         }
 

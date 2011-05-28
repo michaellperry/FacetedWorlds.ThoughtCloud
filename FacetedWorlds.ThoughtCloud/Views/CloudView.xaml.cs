@@ -18,5 +18,30 @@ namespace FacetedWorlds.ThoughtCloud.Views
         {
             InitializeComponent();
         }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox != null)
+                {
+                    textBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+            }
+        }
+
+        private void TextBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue as bool? == true)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox != null)
+                {
+                    textBox.Focus();
+                    textBox.SelectAll();
+                }
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 Thought focusThought = _navigation.FocusThought;
                 if (focusThought == null)
                 {
-                    return Enumerable.Repeat(new ThoughtViewModelSimulated(_cloud), 1)
+                    return Enumerable.Repeat(new ThoughtViewModelSimulated(_cloud, this), 1)
                         .OfType<ThoughtViewModel>();
                 }
                 else
@@ -61,7 +61,17 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                         _cloud.CentralThought = focusThought;
                     }
                     focusThought.LinkTo(thought);
+                    _navigation.EditThought = thought;
                 });
+            }
+        }
+
+        public ICommand ClearEdit
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _navigation.EditThought = null);
             }
         }
 

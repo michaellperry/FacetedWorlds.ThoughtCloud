@@ -20,7 +20,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         public string Text
         {
             get { return _thought.Text.Value ?? "My thought"; }
-            set { _thought.Text = value; }
+            set
+            {
+                _thought.Text = value;
+                _container.EditThought = null;
+            }
         }
 
         public Thickness Margin

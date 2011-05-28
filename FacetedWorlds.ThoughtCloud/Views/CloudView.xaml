@@ -17,7 +17,7 @@
 				</i:Interaction.Triggers>
 				<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock Text="{Binding Text}" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
-				<TextBox Text="{Binding Text, Mode=TwoWay}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Editing, Converter={StaticResource VisibleWhenTrueConverter}}"/>
+				<TextBox Text="{Binding Text, Mode=TwoWay}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Editing, Converter={StaticResource VisibleWhenTrueConverter}}" KeyDown="TextBox_KeyDown" IsEnabledChanged="TextBox_IsEnabledChanged" IsEnabled="{Binding Editing}"/>
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>
@@ -28,6 +28,13 @@
     		<RowDefinition/>
     	</Grid.RowDefinitions>
         <Grid Margin="8,0,8,8" Grid.Row="1">
+    		<Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource CloudBackgroundBrush}">
+    			<i:Interaction.Triggers>
+    				<i:EventTrigger EventName="MouseLeftButtonDown">
+    					<i:InvokeCommandAction Command="{Binding ClearEdit}"/>
+    				</i:EventTrigger>
+    			</i:Interaction.Triggers>
+    		</Border>
     		<ItemsControl ItemsSource="{Binding Thoughts}" ItemTemplate="{StaticResource ThoughtItemTemplate}">
     			<ItemsControl.ItemsPanel>
     				<ItemsPanelTemplate>
