@@ -13,7 +13,6 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
     public class CloudViewModel
     {
         private Cloud _cloud;
-        private DependentList<ThoughtViewModel> _thoughts;
         private Dictionary<Thought, Point> _centerByThought = new Dictionary<Thought, Point>();
         private Dependent _depCenterByThought;
 
@@ -21,13 +20,28 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         {
             _cloud = cloud;
 
-            _thoughts = new DependentList<ThoughtViewModel>(CreateThoughViewModels);
             _depCenterByThought = new Dependent(() => _centerByThought = CalculateCenterByThought());
         }
 
         public IEnumerable<ThoughtViewModel> Thoughts
         {
-            get { return _thoughts; }
+            get
+            {
+                Thought centralThought = _cloud.CentralThought;
+                if (centralThought == null)
+                {
+                    return Enumerable.Repeat(new ThoughtViewModelSimulated(_cloud), 1)
+                        .OfType<ThoughtViewModel>();
+                }
+                else
+                {
+                    return Enumerable.Repeat(new ThoughtViewModelActual(centralThought, GetCenterByThought), 1).Union(
+                        from n in centralThought.Neighbors
+                        where n != centralThought
+                        select new ThoughtViewModelActual(n, GetCenterByThought))
+                        .OfType<ThoughtViewModel>();
+                }
+            }
         }
 
         public ICommand NewThought
@@ -45,24 +59,6 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                     }
                     centralThought.LinkTo(thought);
                 });
-            }
-        }
-
-        private IEnumerable<ThoughtViewModel> CreateThoughViewModels()
-        {
-            Thought centralThought = _cloud.CentralThought;
-            if (centralThought == null)
-            {
-                return Enumerable.Repeat(new ThoughtViewModelSimulated(_cloud), 1)
-                    .OfType<ThoughtViewModel>();
-            }
-            else
-            {
-                return Enumerable.Repeat(new ThoughtViewModelActual(centralThought, GetCenterByThought), 1).Union(
-                    from n in centralThought.Neighbors
-                    where n != centralThought
-                    select new ThoughtViewModelActual(n, GetCenterByThought))
-                    .OfType<ThoughtViewModel>();
             }
         }
 
@@ -85,14 +81,14 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                     .Where(n => n != centralThought)
                     .ToList();
                 int step = 0;
-                double horizontalRadius = 230.0;
-                double verticalRadius = 120.0;
+                double horizontalRadius = 110.0;
+                double verticalRadius = 60.0;
                 foreach (Thought neighbor in neighbors)
                 {
                     double theta = 2 * Math.PI * (double)step / (double)neighbors.Count;
                     centerByThought.Add(neighbor, new Point(
-                        horizontalRadius * Math.Cos(theta),
-                        verticalRadius * Math.Sin(theta)));
+                        horizontalRadius * Math.Sin(theta),
+                        -verticalRadius * Math.Cos(theta)));
                     ++step;
                 }
             }

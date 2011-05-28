@@ -26,7 +26,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 Point center = _getCenterByThought(_thought);
-                return new Thickness(center.X, center.Y, 0.0, 0.0);
+                return new Thickness(center.X, center.Y, -center.X, -center.Y);
             }
         }
 
