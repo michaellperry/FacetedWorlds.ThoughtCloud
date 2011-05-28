@@ -12,6 +12,9 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
     public class CloudViewModel : IThoughtContainer
     {
+        private const double HorizontalRadius = 110.0;
+        private const double VerticalRadius = 60.0;
+
         private readonly Cloud _cloud;
         private readonly CloudNavigationModel _navigation;
 
@@ -38,11 +41,10 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 }
                 else
                 {
-                    return Enumerable.Repeat(new ThoughtViewModelActual(focusThought, this), 1).Union(
-                        from n in focusThought.Neighbors
-                        where n != focusThought
-                        select new ThoughtViewModelActual(n, this))
-                        .OfType<ThoughtViewModel>();
+                    List<ThoughtViewModelActual> thoughtViewModels = new List<ThoughtViewModelActual>();
+                    thoughtViewModels.Add(new ThoughtViewModelActual(focusThought, this));
+                    CreateThoughtViewModels(focusThought, thoughtViewModels, 1);
+                    return thoughtViewModels.OfType<ThoughtViewModel>();
                 }
             }
         }
@@ -89,25 +91,52 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             Dictionary<Thought, Point> centerByThought = new Dictionary<Thought, Point>();
             if (focusThought != null)
             {
-                centerByThought.Add(focusThought, new Point(0.0, 0.0));
-                List<Thought> neighbors = focusThought.Neighbors
-                    .Where(n => n != focusThought)
-                    .ToList();
-                int step = 0;
-                double horizontalRadius = 110.0;
-                double verticalRadius = 60.0;
-                foreach (Thought neighbor in neighbors)
-                {
-                    double theta = 2 * Math.PI * (double)step / (double)neighbors.Count;
-                    centerByThought.Add(neighbor, new Point(
-                        horizontalRadius * Math.Sin(theta),
-                        -verticalRadius * Math.Cos(theta)));
-                    ++step;
-                }
+                Point center = new Point(0.0, 0.0);
+                centerByThought.Add(focusThought, center);
+                Fan(focusThought, centerByThought, center, 0, 2.0 * Math.PI, 1);
             }
             return centerByThought;
         }
 
+        private void CreateThoughtViewModels(Thought thought, List<ThoughtViewModelActual> viewModels, int depth)
+        {
+            List<Thought> neighbors = thought.Neighbors
+                .Distinct()
+                .Where(n => !viewModels.Any(vm => vm.Thought == n))
+                .ToList();
+            foreach (Thought neighbor in neighbors)
+            {
+                viewModels.Add(new ThoughtViewModelActual(neighbor, this));
+
+                if (depth <= 3)
+                    CreateThoughtViewModels(neighbor, viewModels, depth + 1);
+            }
+        }
+
+        private static void Fan(Thought thought, Dictionary<Thought, Point> centerByThought, Point origin, double startRadians, double sweepRadians, int depth)
+        {
+            List<Thought> neighbors = thought.Neighbors
+                .Distinct()
+                .Where(n => !centerByThought.ContainsKey(n))
+                .ToList();
+            int step = 0;
+            double arc = sweepRadians / (double)neighbors.Count;
+            foreach (Thought neighbor in neighbors)
+            {
+                double theta = arc * ((double)step + 0.5) + startRadians;
+                Point center = new Point(
+                    -HorizontalRadius * Math.Sin(theta) + origin.X,
+                    VerticalRadius * Math.Cos(theta) + origin.Y);
+                centerByThought.Add(neighbor, center);
+
+                if (depth <= 3)
+                {
+                    Fan(neighbor, centerByThought, center, arc * (double)step + startRadians, arc, depth + 1);
+                }
+
+                ++step;
+            }
+        }
 
         public Thought FocusThought
         {

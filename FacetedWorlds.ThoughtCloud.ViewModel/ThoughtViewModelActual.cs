@@ -17,6 +17,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             _container = container;
         }
 
+        internal Thought Thought
+        {
+            get { return _thought; }
+        }
+
         public string Text
         {
             get { return _thought.Text.Value ?? "My thought"; }
