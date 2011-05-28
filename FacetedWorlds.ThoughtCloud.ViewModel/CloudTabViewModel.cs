@@ -1,15 +1,18 @@
 ﻿using System.Windows;
 using FacetedWorlds.ThoughtCloud.Model;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
     public class CloudTabViewModel
     {
         private readonly Cloud _cloud;
+        private readonly CloudNavigationModel _navigation;
 
-        public CloudTabViewModel(Cloud cloud)
+        public CloudTabViewModel(Cloud cloud, CloudNavigationModel navigation)
         {
             _cloud = cloud;
+            _navigation = navigation;
         }
 
         internal Cloud Cloud
@@ -33,7 +36,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 
         public CloudViewModel Content
         {
-            get { return new CloudViewModel(_cloud); }
+            get { return new CloudViewModel(_cloud, _navigation); }
         }
 
         public override bool Equals(object obj)

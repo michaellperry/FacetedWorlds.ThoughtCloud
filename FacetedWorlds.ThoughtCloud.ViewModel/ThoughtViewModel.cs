@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
@@ -7,5 +8,6 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         string Text { get; set; }
         Thickness Margin { get; }
         bool Editing { get; }
+        ICommand Focus { get; }
     }
 }

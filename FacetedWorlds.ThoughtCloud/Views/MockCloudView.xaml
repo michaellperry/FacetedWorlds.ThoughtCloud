@@ -25,9 +25,9 @@
     	</Grid>
 		<Grid Margin="8,15,23,8">
 
-			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,14,0,0">
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,14,-10,0">
 				<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
-				<TextBlock TextWrapping="Wrap" Text="Star Wars" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
+				<TextBlock Text="Star Wars" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
 				<TextBox Text="Star Wars" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
 			</Grid>

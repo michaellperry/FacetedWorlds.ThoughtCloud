@@ -5,6 +5,7 @@ using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UpdateControls.Correspondence;
 using UpdateControls.Correspondence.Memory;
+using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 
 namespace FacetedWorlds.ThoughtCloud.UnitTest
 {
@@ -23,7 +24,7 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
 
             _identity = _community.AddFact(new Identity("mike"));
             Cloud cloud = _community.AddFact(new Cloud(_identity));
-            _cloudViewModel = new CloudViewModel(cloud);
+            _cloudViewModel = new CloudViewModel(cloud, new CloudNavigationModel(cloud));
         }
 
         [TestMethod]

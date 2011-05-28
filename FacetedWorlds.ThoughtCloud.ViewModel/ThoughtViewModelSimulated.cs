@@ -1,5 +1,6 @@
 using System.Windows;
 using FacetedWorlds.ThoughtCloud.Model;
+using System.Windows.Input;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
@@ -31,6 +32,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         public bool Editing
         {
             get { return true; }
+        }
+
+        public ICommand Focus
+        {
+            get { return null; }
         }
     }
 }

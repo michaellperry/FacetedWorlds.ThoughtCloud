@@ -55,7 +55,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModels
             {
                 return
                     from cloud in _navigationModel.OpenClouds
-                    select new CloudTabViewModel(cloud);
+                    select new CloudTabViewModel(cloud, new CloudNavigationModel(cloud));
             }
         }
     }
