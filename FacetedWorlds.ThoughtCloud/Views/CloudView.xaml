@@ -1,14 +1,18 @@
-﻿<UserControl x:Class="FacetedWorlds.ThoughtCloud.Views.CloudView"
+﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" x:Class="FacetedWorlds.ThoughtCloud.Views.CloudView"
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="400">
 	<UserControl.Resources>
+		<Itzben:VisibleWhenTrueConverter x:Key="VisibleWhenTrueConverter"/>
 		<DataTemplate x:Key="ThoughtItemTemplate">
-			<Grid>
-				<TextBlock Margin="0,0,0,4" TextWrapping="Wrap" Text="{Binding Text}" d:LayoutOverrides="Width, Height"/>
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{Binding Margin}">
+				<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
+				<TextBlock TextWrapping="Wrap" Text="{Binding Text}" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
+				<TextBox Text="{Binding Text, Mode=TwoWay}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Editing, Converter={StaticResource VisibleWhenTrueConverter}}"/>
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>
@@ -18,8 +22,16 @@
     		<RowDefinition Height="Auto"/>
     		<RowDefinition/>
     	</Grid.RowDefinitions>
-    	<ListBox ItemsSource="{Binding Thoughts}" Margin="8,0,8,8" Grid.Row="1" ItemTemplate="{StaticResource ThoughtItemTemplate}"/>
-    	<Button Content="New Thought" HorizontalAlignment="Left" Margin="8,8,0,8" Width="75" VerticalAlignment="Top" Command="{Binding NewThought}"/>
+        <Grid Margin="8,0,8,8" Grid.Row="1">
+    		<ItemsControl ItemsSource="{Binding Thoughts}" ItemTemplate="{StaticResource ThoughtItemTemplate}">
+    			<ItemsControl.ItemsPanel>
+    				<ItemsPanelTemplate>
+    					<Grid/>
+    				</ItemsPanelTemplate>
+    			</ItemsControl.ItemsPanel>
+    		</ItemsControl>
+    	</Grid>
+        <Button Content="New Thought" HorizontalAlignment="Left" Margin="8,8,0,8" Width="75" VerticalAlignment="Top" Command="{Binding NewThought}"/>
 
     </Grid>
 </UserControl>

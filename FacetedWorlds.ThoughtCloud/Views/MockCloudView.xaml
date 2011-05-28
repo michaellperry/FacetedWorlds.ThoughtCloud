@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="FacetedWorlds.ThoughtCloud.Views.MockCloudView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource CloudBackgroundBrush}">
+		<Path Data="M37.632355,19.066177 L39.286758,88.551468" Fill="#FFAEC2E9" Height="72.485" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Margin="195.456,0,193.823,69.927" VerticalAlignment="Bottom">
+			<Path.RenderTransform>
+				<CompositeTransform ScaleX="-1"/>
+			</Path.RenderTransform>
+		</Path>
+		<Path Data="M45.632004,19.338234 L52.147064,84.963242" Fill="#FFAEC2E9" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Margin="197.389,87.823,193.096,143.552"/>
+
+		<Grid d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,14,0,0">
+			<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
+			<TextBlock TextWrapping="Wrap" Text="Star Wars" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
+			<TextBox Text="Star Wars" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+		</Grid>
+		<Grid Margin="153,70,157,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Characters" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid Margin="162,0,162,54" VerticalAlignment="Bottom" d:LayoutOverrides="Width">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Vehicles" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Right" Margin="0,137,40,127" d:LayoutOverrides="Height">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Factions" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Left" Margin="51,137,0,127" d:LayoutOverrides="Height">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Locations" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid Margin="91,15,180,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Anakin Skywalker" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Right" Margin="0,15,40,0" VerticalAlignment="Top">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Luke Skywalker" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Right" Margin="0,82,41,0" VerticalAlignment="Top">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Sith" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="325,201,0,0">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Jedi" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Right" Margin="0,0,87,8" VerticalAlignment="Bottom">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Land Speeder" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Left" Margin="91,0,0,8" VerticalAlignment="Bottom">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Tie Fighter" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Left" Margin="8,82,0,0" VerticalAlignment="Top">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Mos Eisley" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+		<Grid HorizontalAlignment="Left" Margin="8,0,0,78" VerticalAlignment="Bottom">
+			<Ellipse Stroke="#FF2869A5" StrokeThickness="3"/>
+			<TextBlock TextWrapping="Wrap" Text="Coruscant" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		</Grid>
+	</Grid>
+</UserControl>

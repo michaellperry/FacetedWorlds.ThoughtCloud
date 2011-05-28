@@ -1,3 +1,4 @@
+using System.Windows;
 using FacetedWorlds.ThoughtCloud.Model;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
@@ -20,6 +21,16 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 _cloud.CentralThought = thought;
                 thought.Text = value;
             }
+        }
+
+        public Thickness Margin
+        {
+            get { return new Thickness(0.0, 0.0, 0.0, 0.0); }
+        }
+
+        public bool Editing
+        {
+            get { return true; }
         }
     }
 }

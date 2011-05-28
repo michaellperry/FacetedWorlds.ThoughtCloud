@@ -1,4 +1,5 @@
-﻿using FacetedWorlds.ThoughtCloud.Model;
+﻿using System.Windows;
+using FacetedWorlds.ThoughtCloud.Model;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {

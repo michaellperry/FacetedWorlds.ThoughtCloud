@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<SolidColorBrush x:Key="CloudBackgroundBrush" Color="#FF333333"/>
+	<SolidColorBrush x:Key="ThoughtFillBrush" Color="#FFAEC2E9"/>
+	<SolidColorBrush x:Key="ThoughtStrokeBrush" Color="#FF2869A5"/>
+	<SolidColorBrush x:Key="ThoughtForegroundBrush" Color="Black"/>
+	<!-- Resource dictionary entries should be defined here. -->
+</ResourceDictionary>
