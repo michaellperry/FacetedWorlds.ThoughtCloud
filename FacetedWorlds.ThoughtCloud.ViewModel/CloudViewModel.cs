@@ -128,9 +128,16 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 
         private void AnimateThoughts(object sender, EventArgs e)
         {
-            foreach (InertialProperty x in _inertialXByThought.Values)
+            List<InertialProperty> xProperties;
+            List<InertialProperty> yProperties;
+            lock (this)
+            {
+                xProperties = _inertialXByThought.Values.ToList();
+                yProperties = _inertialYByThought.Values.ToList();
+            }
+            foreach (InertialProperty x in xProperties)
                 x.OnTimer();
-            foreach (InertialProperty y in _inertialYByThought.Values)
+            foreach (InertialProperty y in yProperties)
                 y.OnTimer();
         }
 
@@ -166,10 +173,13 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             foreach (Thought thought in _centerByThought.Keys)
             {
                 Thought thisThought = thought;
-                if (!_inertialXByThought.ContainsKey(thought))
-                    _inertialXByThought.Add(thisThought, new InertialProperty(() => GetX(thisThought)));
-                if (!_inertialYByThought.ContainsKey(thought))
-                    _inertialYByThought.Add(thisThought, new InertialProperty(() => GetY(thisThought)));
+                lock (this)
+                {
+                    if (!_inertialXByThought.ContainsKey(thought))
+                        _inertialXByThought.Add(thisThought, new InertialProperty(() => GetX(thisThought)));
+                    if (!_inertialYByThought.ContainsKey(thought))
+                        _inertialYByThought.Add(thisThought, new InertialProperty(() => GetY(thisThought)));
+                }
             }
         }
 
