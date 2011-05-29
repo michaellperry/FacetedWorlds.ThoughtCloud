@@ -7,6 +7,7 @@ using FacetedWorlds.ThoughtCloud.Model;
 using FacetedWorlds.ThoughtCloud.ViewModel.Models;
 using UpdateControls;
 using UpdateControls.XAML;
+using System.Windows.Media;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
@@ -46,6 +47,32 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                     CreateThoughtViewModels(focusThought, thoughtViewModels, 1);
                     return thoughtViewModels.OfType<ThoughtViewModel>();
                 }
+            }
+        }
+
+        public string LinkGeometry
+        {
+            get
+            {
+                List<Link> links = new List<Link>();
+                Thought focusThought = _navigation.FocusThought;
+                if (focusThought != null)
+                    GetLinks(focusThought, links, 1);
+                return string.Join(" ", links.Select(GetGeometry).ToArray());
+            }
+        }
+
+        private string GetGeometry(Link link)
+        {
+            if (link.Thoughts.Count() == 2)
+            {
+                Point start = GetCenterByThought(link.Thoughts.ElementAt(0));
+                Point end = GetCenterByThought(link.Thoughts.ElementAt(1));
+                return string.Format("M{0},{1} L{2},{3}", start.X, start.Y, end.X, end.Y);
+            }
+            else
+            {
+                return "M0,0 L0,0";
             }
         }
 
@@ -107,9 +134,34 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             foreach (Thought neighbor in neighbors)
             {
                 viewModels.Add(new ThoughtViewModelActual(neighbor, this));
+            }
 
-                if (depth <= 3)
+            if (depth <= 3)
+            {
+                foreach (Thought neighbor in neighbors)
+                {
                     CreateThoughtViewModels(neighbor, viewModels, depth + 1);
+                }
+            }
+        }
+
+        private void GetLinks(Thought thought, List<Link> links, int depth)
+        {
+            List<Link> neighbors = thought.Links
+                .Distinct()
+                .Where(l => !links.Contains(l))
+                .ToList();
+            foreach (Link link in neighbors)
+                links.Add(link);
+
+            if (depth <= 3)
+            {
+                foreach (Link link in neighbors)
+                {
+                    Thought neighbor = link.Thoughts.FirstOrDefault(t => t != thought);
+                    if (neighbor != null)
+                        GetLinks(neighbor, links, depth + 1);
+                }
             }
         }
 
@@ -129,12 +181,17 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                     VerticalRadius * Math.Cos(theta) + origin.Y);
                 centerByThought.Add(neighbor, center);
 
-                if (depth <= 3)
-                {
-                    Fan(neighbor, centerByThought, center, arc * (double)step + startRadians, arc, depth + 1);
-                }
-
                 ++step;
+            }
+
+            if (depth <= 3)
+            {
+                step = 0;
+                foreach (Thought neighbor in neighbors)
+                {
+                    Fan(neighbor, centerByThought, centerByThought[neighbor], arc * (double)step + startRadians, arc, depth + 1);
+                    ++step;
+                }
             }
         }
 

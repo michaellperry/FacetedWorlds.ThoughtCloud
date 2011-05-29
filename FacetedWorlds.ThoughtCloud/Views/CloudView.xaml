@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="FacetedWorlds.ThoughtCloud.Views.CloudView"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="371.647" d:DesignWidth="398.908">
 	<UserControl.Resources>
 		<Itzben:VisibleWhenTrueConverter x:Key="VisibleWhenTrueConverter"/>
 		<DataTemplate x:Key="ThoughtItemTemplate">
@@ -35,6 +35,9 @@
     				</i:EventTrigger>
     			</i:Interaction.Triggers>
     		</Border>
+            <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Width="0" Height="0">
+                <Path Data="{Binding LinkGeometry}" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+            </Canvas>
     		<ItemsControl ItemsSource="{Binding Thoughts}" ItemTemplate="{StaticResource ThoughtItemTemplate}">
     			<ItemsControl.ItemsPanel>
     				<ItemsPanelTemplate>
@@ -42,7 +45,7 @@
     				</ItemsPanelTemplate>
     			</ItemsControl.ItemsPanel>
     		</ItemsControl>
-    	</Grid>
+        </Grid>
         <Button Content="New Thought" HorizontalAlignment="Left" Margin="8,8,0,8" Width="75" VerticalAlignment="Top" Command="{Binding NewThought}"/>
 
     </Grid>

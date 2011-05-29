@@ -7,90 +7,125 @@
     d:DesignHeight="300" d:DesignWidth="400">
     
     <Grid x:Name="LayoutRoot" Background="{StaticResource CloudBackgroundBrush}">
+		<Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="0" Height="0">
+    		<Path Data="M194.66911,161.02942 L199.63235,87.683823" Fill="#FFAEC2E9" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Height="76.345" Width="7.963" Stretch="Fill"/>
+    		<Path Data="M193.66901,163.02901 L314.88971,156.06618" Fill="#FFAEC2E9" Height="9.963" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Canvas.Left="-8.963" Canvas.Top="4.561" Width="124.221"/>
+    		<Path Data="M193.66901,163.02901 L86.029411,155.06601" Fill="#FFAEC2E9" Height="10.963" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="110.64" Canvas.Left="-116.603" Canvas.Top="3.561"/>
+    		<Path Data="M193.66901,163.02901 L201.632,226.10294" Fill="#FFAEC2E9" Height="66.074" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Canvas.Left="-8.963" Canvas.Top="11.524" Width="10.963"/>
+    		<Path Data="M195.66899,86.683998 L165.44118,34.742645" Fill="#FFAEC2E9" Height="54.941" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="33.228" Canvas.Left="-37.191" Canvas.Top="-116.762"/>
+    		<Path Data="M197.66899,88.684006 L306.61765,33.743" Fill="#FFAEC2E9" Height="57.941" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Canvas.Left="-4.963" Canvas.Top="-117.762" Width="111.949"/>
+    		<Path Data="M326.47058,154.06601 L333.63971,100.91912" Fill="#FFAEC2E9" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="10.169" Height="56.147" Canvas.Left="123.839" Canvas.Top="-50.586"/>
+    		<Path Data="M320.88998,155.06601 L347.42648,216.72794" Fill="#FFAEC2E9" Height="64.662" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="29.536" Canvas.Left="118.258" Canvas.Top="3.561"/>
+    		<Path Data="M203.632,228.103 L256.43384,272.42648" Fill="#FFAEC2E9" Height="47.323" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="55.802" Canvas.Left="1" Canvas.Top="76.598"/>
+    		<Path Data="M201.632,228.103 L131.25,274.42599" Fill="#FFAEC2E9" Height="49.323" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Canvas.Left="-71.382" Canvas.Top="76.598" Width="73.382"/>
+    		<Path Data="M85.028999,154.06601 L53.492645,202.94118" Fill="#FFAEC2E9" Height="51.875" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="34.536" Canvas.Left="-149.139" Canvas.Top="2.561"/>
+    		<Path Data="M91.028999,156.06599 L46.875,99.918999" Fill="#FFAEC2E9" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="47.154" Height="59.147" Canvas.Left="-155.757" Canvas.Top="-51.586"/>
 
+    	</Canvas>
 		<Grid>
-    		<Path Data="M194.66911,161.02942 L199.63235,87.683823" Fill="#FFAEC2E9" Margin="193.669,86.684,198.368,136.971" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False"/>
-    		<Path Data="M193.66901,163.02901 L314.88971,156.06618" Fill="#FFAEC2E9" Height="9.963" Margin="192.669,0,83.11,134.971" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom"/>
-    		<Path Data="M193.66901,163.02901 L86.029411,155.06601" Fill="#FFAEC2E9" HorizontalAlignment="Left" Height="10.963" Margin="85.029,0,0,134.971" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="110.64"/>
-    		<Path Data="M193.66901,163.02901 L201.632,226.10294" Fill="#FFAEC2E9" Height="66.074" Margin="192.669,0,196.368,71.897" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom"/>
-    		<Path Data="M195.66899,86.683998 L165.44118,34.742645" Fill="#FFAEC2E9" HorizontalAlignment="Left" Height="54.941" Margin="164.441,33.743,0,0" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Top" Width="33.228"/>
-    		<Path Data="M197.66899,88.684006 L306.61765,33.743" Fill="#FFAEC2E9" Height="57.941" Margin="196.669,32.743,91.382,0" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Top"/>
-    		<Path Data="M326.47058,154.06601 L333.63971,100.91912" Fill="#FFAEC2E9" HorizontalAlignment="Right" Margin="0,99.919,64.36,143.934" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="10.169"/>
-    		<Path Data="M320.88998,155.06601 L347.42648,216.72794" Fill="#FFAEC2E9" HorizontalAlignment="Right" Height="64.662" Margin="0,0,50.574,81.272" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="29.536"/>
-    		<Path Data="M203.632,228.103 L256.43384,272.42648" Fill="#FFAEC2E9" HorizontalAlignment="Right" Height="47.323" Margin="0,0,141.566,25.574" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="55.802"/>
-    		<Path Data="M201.632,228.103 L131.25,274.42599" Fill="#FFAEC2E9" Height="49.323" Margin="130.25,0,196.368,23.574" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom"/>
-    		<Path Data="M85.028999,154.06601 L53.492645,202.94118" Fill="#FFAEC2E9" HorizontalAlignment="Left" Height="51.875" Margin="52.493,0,0,95.059" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="34.536"/>
-    		<Path Data="M91.028999,156.06599 L46.875,99.918999" Fill="#FFAEC2E9" HorizontalAlignment="Left" Margin="45.875,98.919,0,141.934" Stretch="Fill" Stroke="#FF2869A5" StrokeThickness="3" UseLayoutRounding="False" Width="47.154"/>
-
-    	</Grid>
-		<Grid Margin="8,15,23,8">
-
-			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,14,-10,0">
+			<Grid Margin="152,147,163,117" d:LayoutOverrides="Width, Height">
 				<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock Text="Star Wars" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
 				<TextBox Text="Star Wars" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
 			</Grid>
-			<Grid Margin="145,55,134,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
+			<Grid Margin="152,68,158,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Characters" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid Margin="154,0,139,46" VerticalAlignment="Bottom" d:LayoutOverrides="Width">
+			<Grid Margin="161,0,163,56" VerticalAlignment="Bottom" d:LayoutOverrides="Width">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Vehicles" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Right" Margin="0,122,17,119" d:LayoutOverrides="Height">
+			<Grid HorizontalAlignment="Right" Margin="0,135,41,129" d:LayoutOverrides="Height">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Factions" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Left" Margin="43,122,0,119" d:LayoutOverrides="Height">
+			<Grid HorizontalAlignment="Left" Margin="50,135,0,129" d:LayoutOverrides="Height">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Locations" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid Margin="83,0,157,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
+			<Grid Margin="90,13,181,0" VerticalAlignment="Top" d:LayoutOverrides="Width">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Anakin Skywalker" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Right" Margin="0,0,17,0" VerticalAlignment="Top">
+			<Grid HorizontalAlignment="Right" Margin="0,13,41,0" VerticalAlignment="Top">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Luke Skywalker" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Right" Margin="0,67,18,0" VerticalAlignment="Top">
+			<Grid HorizontalAlignment="Right" Margin="0,80,42,0" VerticalAlignment="Top">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Sith" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="317,186,0,0">
+			<Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="324,199,0,0">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Jedi" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Right" Margin="0,0,64,0" VerticalAlignment="Bottom">
+			<Grid HorizontalAlignment="Right" Margin="0,0,88,10" VerticalAlignment="Bottom">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Land Speeder" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Left" Margin="83,0,0,0" VerticalAlignment="Bottom">
+			<Grid HorizontalAlignment="Left" Margin="90,0,0,10" VerticalAlignment="Bottom">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Tie Fighter" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Left" Margin="0,67,0,0" VerticalAlignment="Top">
+			<Grid HorizontalAlignment="Left" Margin="7,80,0,0" VerticalAlignment="Top">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Mos Eisley" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
-			<Grid HorizontalAlignment="Left" Margin="0,0,0,70" VerticalAlignment="Bottom">
+			<Grid HorizontalAlignment="Left" Margin="7,0,0,80" VerticalAlignment="Bottom">
 				<Ellipse Stroke="#FF2869A5" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
 				<TextBlock TextWrapping="Wrap" Text="Coruscant" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 			</Grid>
 		</Grid>
-	</Grid>
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="0" Height="0">
+        	<Path Data="M0,0 L-64.656377752172,48.5410196624969 M0,0 L-104.616216792467,-18.5410196624968" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L-1.34706698920461E-14,-60" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L104.616216792467,-18.5410196624969" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L64.6563777521721,48.5410196624968" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-81.8641689065974,107.802320098205" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-114.595332723522,102.001411113799" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-142.438123682692,90.9674265336897" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-162.667095412893,75.7804496468697" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-214.013625282977,-12.2693118664376" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-209.232433584934,-37.0820393249937" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-186.36214759498,-58.6888560440283" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L-49.9389549713502,-113.460391451302" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L-17.2077911544254,-119.261300435708" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L17.2077911544254,-119.261300435708" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L49.9389549713501,-113.460391451302" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M104.616216792467,-18.5410196624969 L193.608086173711,-53.8081348000453" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M104.616216792467,-18.5410196624969 L214.616216792467,-18.5410196624969" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L-64.656377752172,48.5410196624969" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L-104.616216792467,-18.5410196624968" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L-1.34706698920461E-14,-60" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L104.616216792467,-18.5410196624969" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M0,0 L64.6563777521721,48.5410196624968" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-81.8641689065974,107.802320098205" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-114.595332723522,102.001411113799" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-142.438123682692,90.9674265336897" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-64.656377752172,48.5410196624969 L-162.667095412893,75.7804496468697" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-214.013625282977,-12.2693118664376" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-209.232433584934,-37.0820393249937" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-104.616216792467,-18.5410196624968 L-186.36214759498,-58.6888560440283" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L-49.9389549713502,-113.460391451302" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L-17.2077911544254,-119.261300435708" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L17.2077911544254,-119.261300435708" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M-1.34706698920461E-14,-60 L49.9389549713501,-113.460391451302" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M104.616216792467,-18.5410196624969 L193.608086173711,-53.8081348000453" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+<Path Data="M104.616216792467,-18.5410196624969 L214.616216792467,-18.5410196624969" Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3"/>
+        </Canvas>
+    </Grid>
 </UserControl>

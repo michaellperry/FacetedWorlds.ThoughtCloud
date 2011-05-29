@@ -48,6 +48,10 @@ query:
 		Link l : l.thoughts = this
 		Thought t : l.thoughts = t
 	}
+
+	Link* links {
+		Link l : l.thoughts = this
+	}
 }
 
 fact Link {

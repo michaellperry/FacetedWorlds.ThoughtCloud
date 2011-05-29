@@ -558,6 +558,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
             .JoinSuccessors(Link.RoleThoughts)
             .JoinPredecessors(Link.RoleThoughts)
             ;
+        public static Query QueryLinks = new Query()
+            .JoinSuccessors(Link.RoleThoughts)
+            ;
 
         // Predicates
 
@@ -572,6 +575,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         // Results
         private Result<ThoughtText> _text;
         private Result<Thought> _neighbors;
+        private Result<Link> _links;
 
         // Business constructor
         public Thought(
@@ -595,6 +599,7 @@ namespace FacetedWorlds.ThoughtCloud.Model
         {
             _text = new Result<ThoughtText>(this, QueryText);
             _neighbors = new Result<Thought>(this, QueryNeighbors);
+            _links = new Result<Link>(this, QueryLinks);
         }
 
         // Predecessor access
@@ -611,6 +616,10 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public IEnumerable<Thought> Neighbors
         {
             get { return _neighbors; }
+        }
+        public IEnumerable<Link> Links
+        {
+            get { return _links; }
         }
 
         // Mutable property access
@@ -1089,6 +1098,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Thought._correspondenceFactType,
 				Thought.QueryNeighbors.QueryDefinition);
+			community.AddQuery(
+				Thought._correspondenceFactType,
+				Thought.QueryLinks.QueryDefinition);
 			community.AddType(
 				ThoughtText._correspondenceFactType,
 				new ThoughtText.CorrespondenceFactFactory(fieldSerializerByType),

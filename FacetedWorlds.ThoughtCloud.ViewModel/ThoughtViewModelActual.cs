@@ -62,5 +62,20 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         {
             get { return _container.EditThought == _thought; }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj)
+                return true;
+            ThoughtViewModelActual that = obj as ThoughtViewModelActual;
+            if (that == null)
+                return false;
+            return _thought == that._thought;
+        }
+
+        public override int GetHashCode()
+        {
+            return _thought.GetHashCode();
+        }
     }
 }
