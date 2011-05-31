@@ -88,6 +88,60 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
             Assert.AreEqual("Mi Pueblo", suggestionText);
         }
 
+        [TestMethod]
+        public void ConflictsAreDetected()
+        {
+            Cloud cloud_Mike = MikeSharesCloudWithRussell();
+            Thought thought_Mike = cloud_Mike.NewThought();
+            cloud_Mike.CentralThought = thought_Mike;
+            thought_Mike.Text = "Initial value";
+
+            Synchronize();
+
+            Thought thought_Russell = _russellsIdentity.SharedClouds.Single().CentralThought;
+            thought_Mike.Text = "Mike's change";
+            thought_Russell.Text = "Russell's change";
+
+            Synchronize();
+
+            Assert.IsTrue(thought_Mike.Text.InConflict);
+            Assert.IsTrue(thought_Mike.Text.Candidates.Contains("Mike's change"));
+            Assert.IsTrue(thought_Mike.Text.Candidates.Contains("Russell's change"));
+            Assert.IsFalse(thought_Mike.Text.Candidates.Contains("Initial value"));
+
+            Assert.IsTrue(thought_Russell.Text.InConflict);
+            Assert.IsTrue(thought_Russell.Text.Candidates.Contains("Mike's change"));
+            Assert.IsTrue(thought_Russell.Text.Candidates.Contains("Russell's change"));
+            Assert.IsFalse(thought_Russell.Text.Candidates.Contains("Initial value"));
+        }
+
+        [TestMethod]
+        public void ConflictsCanBeResolved()
+        {
+            Cloud cloud_Mike = MikeSharesCloudWithRussell();
+            Thought thought_Mike = cloud_Mike.NewThought();
+            cloud_Mike.CentralThought = thought_Mike;
+            thought_Mike.Text = "Initial value";
+
+            Synchronize();
+
+            Thought thought_Russell = _russellsIdentity.SharedClouds.Single().CentralThought;
+            thought_Mike.Text = "Mike's change";
+            thought_Russell.Text = "Russell's change";
+
+            Synchronize();
+
+            thought_Mike.Text = "Mike's resolution";
+
+            Synchronize();
+
+            Assert.IsFalse(thought_Mike.Text.InConflict);
+            Assert.AreEqual("Mike's resolution", thought_Mike.Text.Value);
+
+            Assert.IsFalse(thought_Russell.Text.InConflict);
+            Assert.AreEqual("Mike's resolution", thought_Russell.Text.Value);
+        }
+
         private void Synchronize()
         {
             while (_mikesCommunity.Synchronize() || _russellsCommunity.Synchronize()) ;

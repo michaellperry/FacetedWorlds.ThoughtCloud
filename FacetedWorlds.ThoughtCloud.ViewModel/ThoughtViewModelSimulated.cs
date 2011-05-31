@@ -8,7 +8,6 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
     {
         private readonly Cloud _cloud;
         private readonly IThoughtContainer _container;
-
         public ThoughtViewModelSimulated(Cloud cloud, IThoughtContainer container)
         {
             _container = container;
@@ -25,6 +24,16 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
                 thought.Text = value;
                 _container.EditThought = null;
             }
+        }
+
+        public bool InConflict
+        {
+            get { return false; }
+        }
+
+        public string Candidates
+        {
+            get { return string.Empty; }
         }
 
         public Thickness Margin

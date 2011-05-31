@@ -3,6 +3,7 @@ using FacetedWorlds.ThoughtCloud.Model;
 using System;
 using System.Windows.Input;
 using UpdateControls.XAML;
+using System.Linq;
 
 namespace FacetedWorlds.ThoughtCloud.ViewModel
 {
@@ -24,11 +25,25 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
 
         public string Text
         {
-            get { return _thought.Text.Value ?? "My thought"; }
+            get { return _thought.Text ?? "My thought"; }
             set
             {
                 _thought.Text = value;
                 _container.EditThought = null;
+            }
+        }
+
+        public bool InConflict
+        {
+            get { return _thought.Text.InConflict; }
+        }
+
+        public string Candidates
+        {
+            get
+            {
+                return _thought.Text.Candidates
+                    .Aggregate((list, c) => string.Format("{0}, {1}", list, c));
             }
         }
 
