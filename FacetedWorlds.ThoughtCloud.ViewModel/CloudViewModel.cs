@@ -37,7 +37,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             });
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(0.1);
+            timer.Interval = TimeSpan.FromSeconds(0.05);
             timer.Tick += new EventHandler(AnimateThoughts);
             timer.Start();
         }

@@ -1,0 +1,16 @@
+digraph "FacetedWorlds.ThoughtCloud.Model"
+{
+    rankdir=BT
+    Cloud -> Identity
+    CloudCentralThought -> Cloud [color="red"]
+    CloudCentralThought -> CloudCentralThought [label="  *"]
+    CloudCentralThought -> Thought
+    Share -> Identity [color="red"]
+    Share -> Cloud
+    Thought -> Cloud [color="red"]
+    ThoughtText -> Thought
+    ThoughtText -> ThoughtText [label="  *"]
+    Link -> Thought [label="  *"]
+    DisableToastNotification -> Identity
+    EnableToastNotification -> DisableToastNotification [label="  *"]
+}
