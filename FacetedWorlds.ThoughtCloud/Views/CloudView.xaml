@@ -27,7 +27,7 @@
     		<RowDefinition Height="Auto"/>
     		<RowDefinition/>
     	</Grid.RowDefinitions>
-        <Grid Margin="8,0,8,8" Grid.Row="1">
+        <Grid Margin="8,0,8,8" Grid.Row="1" SizeChanged="Grid_SizeChanged">
     		<Border BorderBrush="Black" BorderThickness="1" Background="{StaticResource CloudBackgroundBrush}">
     			<i:Interaction.Triggers>
     				<i:EventTrigger EventName="MouseLeftButtonDown">

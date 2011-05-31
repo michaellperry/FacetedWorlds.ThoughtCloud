@@ -43,5 +43,17 @@ namespace FacetedWorlds.ThoughtCloud.Views
                 }
             }
         }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Grid grid = sender as Grid;
+            RectangleGeometry geometry = grid.Clip as RectangleGeometry;
+            if (geometry == null)
+            {
+                geometry = new RectangleGeometry();
+                grid.Clip = geometry;
+            }
+            geometry.Rect = new Rect(new Point(0.0, 0.0), new Size(grid.ActualWidth, grid.ActualHeight));
+        }
     }
 }
