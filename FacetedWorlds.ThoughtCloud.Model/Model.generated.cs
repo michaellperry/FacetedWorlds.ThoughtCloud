@@ -79,9 +79,6 @@ namespace FacetedWorlds.ThoughtCloud.Model
             .JoinSuccessors(DisableToastNotification.RoleIdentity, Condition.WhereIsEmpty(DisableToastNotification.QueryIsReenabled)
             )
             ;
-        public static Query QueryClouds = new Query()
-            .JoinSuccessors(Cloud.RoleCreator)
-            ;
         public static Query QuerySharedClouds = new Query()
             .JoinSuccessors(Share.RoleRecipient)
             .JoinPredecessors(Share.RoleCloud)
@@ -96,7 +93,6 @@ namespace FacetedWorlds.ThoughtCloud.Model
 
         // Results
         private Result<DisableToastNotification> _isToastNotificationDisabled;
-        private Result<Cloud> _clouds;
         private Result<Cloud> _sharedClouds;
 
         // Business constructor
@@ -118,7 +114,6 @@ namespace FacetedWorlds.ThoughtCloud.Model
         private void InitializeResults()
         {
             _isToastNotificationDisabled = new Result<DisableToastNotification>(this, QueryIsToastNotificationDisabled);
-            _clouds = new Result<Cloud>(this, QueryClouds);
             _sharedClouds = new Result<Cloud>(this, QuerySharedClouds);
         }
 
@@ -134,10 +129,6 @@ namespace FacetedWorlds.ThoughtCloud.Model
         public IEnumerable<DisableToastNotification> IsToastNotificationDisabled
         {
             get { return _isToastNotificationDisabled; }
-        }
-        public IEnumerable<Cloud> Clouds
-        {
-            get { return _clouds; }
         }
         public IEnumerable<Cloud> SharedClouds
         {
@@ -1064,9 +1055,6 @@ namespace FacetedWorlds.ThoughtCloud.Model
 			community.AddQuery(
 				Identity._correspondenceFactType,
 				Identity.QueryIsToastNotificationDisabled.QueryDefinition);
-			community.AddQuery(
-				Identity._correspondenceFactType,
-				Identity.QueryClouds.QueryDefinition);
 			community.AddQuery(
 				Identity._correspondenceFactType,
 				Identity.QuerySharedClouds.QueryDefinition);

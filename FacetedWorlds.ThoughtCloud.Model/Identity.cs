@@ -5,7 +5,9 @@ namespace FacetedWorlds.ThoughtCloud.Model
     {
         public Cloud NewCloud()
         {
-            return Community.AddFact(new Cloud(this));
+            Cloud cloud = Community.AddFact(new Cloud(this));
+            NewShare(cloud);
+            return cloud;
         }
 
         public void NewShare(Cloud cloud)

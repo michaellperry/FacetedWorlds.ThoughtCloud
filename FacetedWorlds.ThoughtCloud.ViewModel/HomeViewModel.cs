@@ -24,7 +24,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 return
-                    from c in _identity.Clouds
+                    from c in _identity.SharedClouds
                     select new CloudSummaryViewModel(c);
             }
         }

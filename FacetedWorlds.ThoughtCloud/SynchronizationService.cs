@@ -27,7 +27,6 @@ namespace FacetedWorlds.ThoughtCloud
                 .Register<CorrespondenceModel>()
                 .Subscribe(() => _navigationModel.CurrentUser)
                 .Subscribe(() => _navigationModel.CurrentUser.SharedClouds)
-                .Subscribe(() => _navigationModel.CurrentUser.Clouds)
                 ;
 
             _navigationModel.CurrentUser = _community.AddFact(new Identity("mike"));

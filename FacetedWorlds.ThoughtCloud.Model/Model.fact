@@ -10,10 +10,6 @@ query:
             where not d.isReenabled
     }
 
-	Cloud* clouds {
-		Cloud c : c.creator = this
-	}
-
 	Cloud* sharedClouds {
 		Share s : s.recipient = this
 		Cloud c : s.cloud = c

@@ -26,14 +26,12 @@ namespace FacetedWorlds.ThoughtCloud.UnitTest
                 .Register<Model.CorrespondenceModel>()
                 .Subscribe(() => _mikesIdentity)
                 .Subscribe(() => _mikesIdentity.SharedClouds)
-                .Subscribe(() => _mikesIdentity.Clouds)
 				;
             _russellsCommunity = new Community(new MemoryStorageStrategy())
                 .AddCommunicationStrategy(sharedCommunication)
                 .Register<Model.CorrespondenceModel>()
                 .Subscribe(() => _russellsIdentity)
                 .Subscribe(() => _russellsIdentity.SharedClouds)
-                .Subscribe(() => _russellsIdentity.Clouds)
 				;
 
             _mikesIdentity = _mikesCommunity.AddFact(new Identity("mike"));

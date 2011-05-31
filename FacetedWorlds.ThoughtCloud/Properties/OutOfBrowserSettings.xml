@@ -1,7 +1,7 @@
 <OutOfBrowserSettings ShortName="Thought Cloud" EnableGPUAcceleration="False" ShowInstallMenuItem="True">
-  <OutOfBrowserSettings.Blurb>Capture thoughts and share them.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.Blurb>Capture thoughts and share them with others.</OutOfBrowserSettings.Blurb>
   <OutOfBrowserSettings.WindowSettings>
-    <WindowSettings Title="Thought Cloud" Height="300" Width="500" />
+    <WindowSettings Title="Thought Cloud" Height="600" Width="800" />
   </OutOfBrowserSettings.WindowSettings>
   <OutOfBrowserSettings.Icons />
 </OutOfBrowserSettings>
