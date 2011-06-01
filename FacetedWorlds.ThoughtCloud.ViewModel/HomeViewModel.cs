@@ -50,7 +50,11 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
             get
             {
                 return MakeCommand
-                    .Do(() => _identity.NewCloud());
+                    .Do(() =>
+                    {
+                        Cloud cloud = _identity.NewCloud();
+                        _navigation.OpenCloud(cloud);
+                    });
             }
         }
 

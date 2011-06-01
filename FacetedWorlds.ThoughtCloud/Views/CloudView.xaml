@@ -3,21 +3,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="FacetedWorlds.ThoughtCloud.Views.CloudView"
+    xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben"
+    xmlns:ValueConverters="clr-namespace:FacetedWorlds.ThoughtCloud.ValueConverters"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    x:Class="FacetedWorlds.ThoughtCloud.Views.CloudView"
     mc:Ignorable="d"
     d:DesignHeight="371.647" d:DesignWidth="398.908">
 	<UserControl.Resources>
 		<Itzben:VisibleWhenTrueConverter x:Key="VisibleWhenTrueConverter"/>
-		<DataTemplate x:Key="ThoughtItemTemplate">
+        <ValueConverters:ThoughtFillBrushConverter x:Key="ThoughtFillBrushConverter"/>
+        <ValueConverters:ThoughtStrokeBrushConverter x:Key="ThoughtStrokeBrushConverter"/>
+        <DataTemplate x:Key="ThoughtItemTemplate">
 			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{Binding Margin}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseLeftButtonDown">
 						<i:InvokeCommandAction Command="{Binding Focus}"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
-				<Ellipse Stroke="{StaticResource ThoughtStrokeBrush}" StrokeThickness="3" Fill="{StaticResource ThoughtFillBrush}"/>
+                <Ellipse Stroke="{Binding InConflict, Converter={StaticResource ThoughtStrokeBrushConverter}}" StrokeThickness="3" Fill="{Binding InConflict, Converter={StaticResource ThoughtFillBrushConverter}}"/>
 				<TextBlock Text="{Binding Text}" Margin="15,10" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ThoughtForegroundBrush}"/>
-				<TextBox Text="{Binding Text, Mode=TwoWay}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Editing, Converter={StaticResource VisibleWhenTrueConverter}}" KeyDown="TextBox_KeyDown" IsEnabledChanged="TextBox_IsEnabledChanged" IsEnabled="{Binding Editing}"/>
+				<TextBox Text="{Binding Text, Mode=TwoWay}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Editing, Converter={StaticResource VisibleWhenTrueConverter}}" KeyDown="TextBox_KeyDown" IsEnabledChanged="TextBox_IsEnabledChanged" Loaded="TextBox_Loaded" IsEnabled="{Binding Editing}"/>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="{Binding Candidates}" Visibility="{Binding InConflict, Converter={StaticResource VisibleWhenTrueConverter}}"/>
+                </ToolTipService.ToolTip>
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>

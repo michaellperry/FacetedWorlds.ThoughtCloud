@@ -55,5 +55,15 @@ namespace FacetedWorlds.ThoughtCloud.Views
             }
             geometry.Rect = new Rect(new Point(0.0, 0.0), new Size(grid.ActualWidth, grid.ActualHeight));
         }
+
+        private void TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.IsEnabled)
+            {
+                textBox.Focus();
+                textBox.SelectAll();
+            }
+        }
     }
 }

@@ -5,5 +5,7 @@
 	<SolidColorBrush x:Key="ThoughtFillBrush" Color="#FFAEC2E9"/>
 	<SolidColorBrush x:Key="ThoughtStrokeBrush" Color="#FF2869A5"/>
 	<SolidColorBrush x:Key="ThoughtForegroundBrush" Color="Black"/>
+	<SolidColorBrush x:Key="ConflictThoughtFillBrush" Color="#FFE9AEAE"/>
+	<SolidColorBrush x:Key="ConflictThoughtStrokeBrush" Color="#FFA52828"/>
 	<!-- Resource dictionary entries should be defined here. -->
 </ResourceDictionary>

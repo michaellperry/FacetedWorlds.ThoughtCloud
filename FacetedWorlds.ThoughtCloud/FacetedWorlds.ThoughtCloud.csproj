@@ -102,6 +102,8 @@
     <Compile Include="POXConfigurationProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizationService.cs" />
+    <Compile Include="ValueConverters\ThoughtStrokeBrushConverter.cs" />
+    <Compile Include="ValueConverters\ThoughtFillBrushConverter.cs" />
     <Compile Include="Views\CloudTabItem.cs" />
     <Compile Include="ValueConverters\TabConverter.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
