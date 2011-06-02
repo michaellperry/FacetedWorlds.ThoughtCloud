@@ -42,7 +42,7 @@ namespace FacetedWorlds.ThoughtCloud.ViewModel
         {
             get
             {
-                return _thought.Text.Candidates
+                return !_thought.Text.InConflict ? string.Empty : _thought.Text.Candidates
                     .Aggregate((list, c) => string.Format("{0}, {1}", list, c));
             }
         }
