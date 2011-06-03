@@ -109,9 +109,6 @@
     <Compile Include="Views\ArchitectureView.xaml.cs">
       <DependentUpon>ArchitectureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CorrespondenceArchitectureView.xaml.cs">
-      <DependentUpon>CorrespondenceArchitectureView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -167,10 +164,6 @@
       <Visible>false</Visible>
     </None>
     <Page Include="Views\ArchitectureView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CorrespondenceArchitectureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
