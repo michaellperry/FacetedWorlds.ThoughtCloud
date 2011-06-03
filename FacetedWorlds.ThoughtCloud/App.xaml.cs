@@ -9,11 +9,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using FacetedWorlds.ThoughtCloud.SilverlightLocal;
 
 namespace FacetedWorlds.ThoughtCloud
 {
     public partial class App : Application
     {
+        private LocalInstanceMessenger _messenger;
 
         public App()
         {
@@ -26,12 +28,16 @@ namespace FacetedWorlds.ThoughtCloud
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new MainPage();
+            _messenger = new LocalInstanceMessenger();
+            if (_messenger.SingleInstance)
+                RootVisual = new MainPage();
+            else
+                RootVisual = new ErrorPage();
         }
 
         private void Application_Exit(object sender, EventArgs e)
         {
-
+            _messenger.Dispose();
         }
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)

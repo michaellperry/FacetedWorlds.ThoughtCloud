@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacetedWorlds.ThoughtCloud.UnitTest", "FacetedWorlds.ThoughtCloud.UnitTest\FacetedWorlds.ThoughtCloud.UnitTest.csproj", "{EEAA7EFF-89C0-41FE-8C2C-8EB3FF3EAD9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtCloud.Presentation", "ThoughtCloud.Presentation\ThoughtCloud.Presentation.csproj", "{11b8cb52-51f7-4d2d-a1ef-5c17724144dc}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoughtCloud.Presentation", "ThoughtCloud.Presentation\ThoughtCloud.Presentation.csproj", "{11B8CB52-51F7-4D2D-A1EF-5C17724144DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39AE27B2-4DE0-467E-8194-6E3577AC1BC3}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Version.cs = Solution Items\Version.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
