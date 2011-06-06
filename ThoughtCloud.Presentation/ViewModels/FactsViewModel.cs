@@ -1,10 +1,16 @@
 ﻿using System.Windows.Input;
 using UpdateControls.Fields;
 using UpdateControls.XAML;
+using System;
 
 namespace ThoughtCloud_Presentation.ViewModels
 {
-    public class FactsViewModel
+    public interface IPresentationViewModel
+    {
+        bool Backward();
+        bool Forward();
+    }
+    public class FactsViewModel : IPresentationViewModel
     {
         public enum StateId
         {
@@ -28,13 +34,26 @@ namespace ThoughtCloud_Presentation.ViewModels
             get { return _state; }
         }
 
-        public ICommand Next
+        public bool Forward()
         {
-            get
+            if (_state.Value != StateId.NewShare)
             {
-                return MakeCommand
-                    .Do(() => _state.Value = _state.Value + 1);
+                _state.Value = _state.Value + 1;
+                return true;
             }
+            else
+                return false;
+        }
+
+        public bool Backward()
+        {
+            if (_state.Value != StateId.Start)
+            {
+                _state.Value = _state.Value - 1;
+                return true;
+            }
+            else
+                return false;
         }
 
         public string Code

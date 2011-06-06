@@ -2,8 +2,9 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:ThoughtCloud_Presentation"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	x:Class="ThoughtCloud_Presentation.MainPage"
-	Width="640" Height="480">
+    KeyDown="UserControl_KeyDown" d:DesignWidth="730" d:DesignHeight="579">
 
 	<Grid x:Name="LayoutRoot">
 		<Grid.Background>
