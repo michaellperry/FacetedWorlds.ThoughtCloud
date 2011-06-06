@@ -120,6 +120,7 @@
     <Compile Include="Navigation\NavigationController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FactsViewModel.cs" />
+    <Compile Include="ViewModels\IPresentationViewModel.cs" />
     <Compile Include="Views\ArchitectureView.xaml.cs">
       <DependentUpon>ArchitectureView.xaml</DependentUpon>
     </Compile>

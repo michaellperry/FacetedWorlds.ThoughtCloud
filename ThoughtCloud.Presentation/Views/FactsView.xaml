@@ -166,7 +166,7 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
     
-		<Canvas x:Name="LayoutRoot" d:DataContext="{d:DesignData /SampleData/FactsViewModelSampleData.xaml}" Background="#05000000" Height="600" Width="800">
+		<Canvas x:Name="LayoutRoot" d:DataContext="{d:DesignData /SampleData/FactsViewModelSampleData.xaml}" Height="600" Width="800">
 			<i:Interaction.Behaviors>
 				<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
 			</i:Interaction.Behaviors>
