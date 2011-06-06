@@ -6,7 +6,6 @@
 		<!-- Resources scoped at the Application level should be defined here. -->
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="barretr_Earth.Canvas.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>

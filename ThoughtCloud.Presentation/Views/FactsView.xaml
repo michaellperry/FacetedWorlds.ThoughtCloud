@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="ThoughtCloud_Presentation.Views.FactsView"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Itzben="clr-namespace:Itzben;assembly=Itzben" xmlns:ThoughtCloud_Presentation="clr-namespace:ThoughtCloud.Presentation" x:Class="ThoughtCloud_Presentation.Views.FactsView"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="800">
 	<UserControl.Resources>
@@ -26,7 +26,7 @@
 		</Style>
 	</UserControl.Resources>
     
-    <Canvas x:Name="LayoutRoot">
+    <Canvas x:Name="LayoutRoot" d:DataContext="{d:DesignData /SampleData/FactsViewModelSampleData.xaml}" Background="#05000000">
     	<VisualStateManager.VisualStateGroups>
     		<VisualStateGroup x:Name="VisualStateGroup">
     			<VisualStateGroup.Transitions>
@@ -165,7 +165,15 @@
     			</VisualState>
     		</VisualStateGroup>
     	</VisualStateManager.VisualStateGroups>
-    	<TextBlock Height="64" Canvas.Left="51" TextWrapping="Wrap" Text="Community.AddFact(new Identity(&quot;mike&quot;));" Canvas.Top="512" Width="724" FontSize="24" Foreground="White" TextAlignment="Center" FontFamily="Consolas"/>
+    	<i:Interaction.Behaviors>
+    		<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
+    	</i:Interaction.Behaviors>
+    	<i:Interaction.Triggers>
+    		<i:EventTrigger EventName="MouseLeftButtonDown">
+    			<ThoughtCloud_Presentation:ButtonCommandBehavior Command="{Binding Next}"/>
+    		</i:EventTrigger>
+    	</i:Interaction.Triggers>
+    	<TextBlock Height="64" Canvas.Left="51" TextWrapping="Wrap" Text="{Binding Code}" Canvas.Top="512" Width="724" FontSize="24" Foreground="White" TextAlignment="Center" FontFamily="Consolas"/>
     	<sdk:Label x:Name="IdentityMike" Height="75" Canvas.Left="51" Style="{StaticResource FactStyle}" Canvas.Top="66" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
     		<sdk:Label.RenderTransform>
     			<CompositeTransform/>

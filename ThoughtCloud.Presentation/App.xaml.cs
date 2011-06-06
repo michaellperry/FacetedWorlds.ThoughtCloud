@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+using ThoughtCloud.Presentation.Navigation;
+using ThoughtCloud_Presentation.ViewModels;
 
 namespace ThoughtCloud_Presentation
 {
 	public partial class App : Application
 	{
+        private NavigationController _navigationController = new NavigationController();
+
 		public App()
 		{
 			this.Startup += this.Application_Startup;
@@ -25,7 +20,11 @@ namespace ThoughtCloud_Presentation
 
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
-			this.RootVisual = new MainPage();
+			MainPage mainPage = new MainPage();
+            this.RootVisual = mainPage;
+            _navigationController.BeginMainPage(mainPage);
+
+            _navigationController.NavigateTo(new FactsViewModel());
 		}
 
 		private void Application_Exit(object sender, EventArgs e)
