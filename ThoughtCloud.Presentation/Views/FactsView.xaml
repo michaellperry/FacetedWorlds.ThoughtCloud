@@ -83,6 +83,8 @@
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cloud1" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3Path" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 				<VisualState x:Name="NewThought3Text">
@@ -163,6 +165,24 @@
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentitySharePath" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
+				<VisualState x:Name="QueryNeighbors">
+					<Storyboard>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentityMike" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentityRussell" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cloud1" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3Path" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3Text" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3TextPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4Path" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4Text" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4TextPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Link" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3LinkPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4LinkPath" d:IsOptimized="True"/>
+					</Storyboard>
+				</VisualState>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
     
@@ -170,57 +190,61 @@
 			<i:Interaction.Behaviors>
 				<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
 			</i:Interaction.Behaviors>
-			<TextBlock Height="64" Canvas.Left="51" TextWrapping="Wrap" Text="{Binding Code}" Canvas.Top="512" Width="724" FontSize="24" Foreground="White" TextAlignment="Center" FontFamily="Consolas"/>
-			<sdk:Label x:Name="IdentityMike" Height="75" Canvas.Left="51" Style="{StaticResource FactStyle}" Canvas.Top="66" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
+			<Border Height="220" Canvas.Left="139" Canvas.Top="372" Width="529" Background="White" CornerRadius="12">
+				<TextBlock TextWrapping="Wrap" Text="{Binding Code}" FontSize="21.333" Foreground="Black" FontFamily="Consolas" Margin="8,0"/>
+			</Border>
+			<sdk:Label x:Name="IdentityMike" Height="75" Canvas.Left="51" Style="{StaticResource FactStyle}" Canvas.Top="26" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>
 					<CompositeTransform/>
 				</sdk:Label.RenderTransform>
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Identity"/><LineBreak/><Run Text="&quot;mike&quot;"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="IdentityRussell" Canvas.Left="629" Canvas.Top="69" Style="{StaticResource FactStyle}" Width="146" Height="68" Opacity="0" RenderTransformOrigin="0.5,0.5">
+			<sdk:Label x:Name="IdentityRussell" Canvas.Left="629" Canvas.Top="29" Style="{StaticResource FactStyle}" Width="146" Height="68" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>
 					<CompositeTransform/>
 				</sdk:Label.RenderTransform>
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Identity"/><LineBreak/><Run Text="&quot;russell&quot;"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Cloud1" Height="75" Canvas.Left="333" Style="{StaticResource FactStyle}" Canvas.Top="66" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
+			<sdk:Label x:Name="Cloud1" Height="75" Canvas.Left="333" Style="{StaticResource FactStyle}" Canvas.Top="26" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>
 					<CompositeTransform/>
 				</sdk:Label.RenderTransform>
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Cloud"/><LineBreak/><Run Text="GUID 1"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Cloud2" Height="75" Canvas.Left="479" Style="{StaticResource FactStyle}" Canvas.Top="66" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
+			<sdk:Label x:Name="Cloud2" Height="75" Canvas.Left="479" Style="{StaticResource FactStyle}" Canvas.Top="26" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>
 					<CompositeTransform/>
 				</sdk:Label.RenderTransform>
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Cloud"/><LineBreak/><Run Text="GUID 2"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Thought3" Height="75" Canvas.Left="238" Style="{StaticResource FactStyle}" Canvas.Top="238" Width="146" Opacity="0">
+			<sdk:Label x:Name="Thought3" Height="75" Canvas.Left="237" Style="{StaticResource FactStyle}" Canvas.Top="163" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Thought"/><LineBreak/><Run Text="GUID 3"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Thought4" Height="75" Canvas.Left="411" Style="{StaticResource FactStyle}" Canvas.Top="238" Width="146" Opacity="0">
+			<sdk:Label x:Name="Thought4" Height="75" Canvas.Left="410" Style="{StaticResource FactStyle}" Canvas.Top="163" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Thought"/><LineBreak/><Run Text="GUID 4"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Thought3Text" Height="75" Canvas.Left="156" Style="{StaticResource FactStyle}" Canvas.Top="383" Width="146" Opacity="0">
+			<sdk:Label x:Name="Thought3Text" Height="75" Canvas.Left="155" Style="{StaticResource FactStyle}" Canvas.Top="280" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="ThoughtText"/><LineBreak/><Run Text="&quot;Star Wars&quot;"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Thought4Text" Height="75" Canvas.Left="511" Style="{StaticResource FactStyle}" Canvas.Top="384" Width="146" Opacity="0">
+			<sdk:Label x:Name="Thought4Text" Height="75" Canvas.Left="510" Style="{StaticResource FactStyle}" Canvas.Top="281" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="ThoughtText"/><LineBreak/><Run Text="&quot;Characters&quot;"/></TextBlock>
 			</sdk:Label>
-			<sdk:Label x:Name="Link" Height="75" Canvas.Left="326" Style="{StaticResource FactStyle}" Canvas.Top="384" Width="146" Opacity="0">
+			<sdk:Label x:Name="Link" Height="75" Canvas.Left="325" Style="{StaticResource FactStyle}" Canvas.Top="281" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Link"/>
 			</sdk:Label>
-			<sdk:Label x:Name="ShareRussell" Height="75" Canvas.Left="511" Style="{StaticResource FactStyle}" Canvas.Top="149" Width="146" Opacity="0">
+			<sdk:Label x:Name="ShareRussell" Height="75" Canvas.Left="572" Style="{StaticResource FactStyle}" Canvas.Top="130" Width="146" Opacity="0">
 				<TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Share"/>
 			</sdk:Label>
-			<Path x:Name="Thought3Path" Data="M384,149 L333,234" Height="86" Canvas.Left="333" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" Canvas.Top="149" UseLayoutRounding="False" Width="52" StrokeThickness="7" Opacity="0"/>
-			<Path x:Name="Thought4Path" Data="M427,149 L468,234" Height="92" Canvas.Left="424" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="146" UseLayoutRounding="False" Width="48" Opacity="0"/>
-			<Path x:Name="Thought3LinkPath" Data="M333,317 L384,380" Height="70" Canvas.Left="330" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="314" UseLayoutRounding="False" Width="58" Opacity="0"/>
-			<Path x:Name="Thought4LinkPath" Data="M458,317 L411,380" Height="70" Canvas.Left="408" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="314" UseLayoutRounding="False" Width="54" Opacity="0"/>
-			<Path x:Name="CloudSharePath" Data="M495,149 L472,132" Height="37" Canvas.Left="469" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="129" UseLayoutRounding="False" Width="53" Opacity="0"/>
-			<Path x:Name="IdentitySharePath" Data="M679,141 L657,162" Height="29" Canvas.Left="643.667" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="137" UseLayoutRounding="False" Width="39.333" Opacity="0"/>
-			<Path x:Name="Thought3TextPath" Data="M458,317 L411,380" Height="70" Canvas.Left="238" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="313" UseLayoutRounding="False" Width="54" Opacity="0"/>
-			<Path x:Name="Thought4TextPath" Data="M333,317 L384,380" Height="70" Canvas.Left="511" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="314.008" UseLayoutRounding="False" Width="58" Opacity="0"/>
+			<Path x:Name="Thought3Path" Data="M384,149 L333,234" Height="54" Canvas.Left="343" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" Canvas.Top="109" UseLayoutRounding="False" Width="42" StrokeThickness="7" Opacity="0"/>
+			<Path x:Name="Thought4Path" Data="M427,149 L468,234" Height="57" Canvas.Left="424" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="106" UseLayoutRounding="False" Width="41" Opacity="0"/>
+			<Path x:Name="Thought3LinkPath" Data="M333,317 L384,380" Height="42" Canvas.Left="329" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="239" UseLayoutRounding="False" Width="38" Opacity="0"/>
+			<Path x:Name="Thought4LinkPath" Data="M458,317 L411,380" Height="42" Canvas.Left="423" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="239" UseLayoutRounding="False" Width="38" Opacity="0"/>
+			<Path x:Name="CloudSharePath" Data="M495,149 L472,132" Height="54" Canvas.Left="469" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="89" UseLayoutRounding="False" Width="118" Opacity="0"/>
+			<Path x:Name="IdentitySharePath" Data="M679,141 L657,162" Height="33" Canvas.Left="674.667" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="97" UseLayoutRounding="False" Width="19.333" Opacity="0"/>
+			<Path x:Name="Thought3TextPath" Data="M458,317 L411,380" Height="42" Canvas.Left="259" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="238" UseLayoutRounding="False" Width="32" Opacity="0"/>
+			<Path x:Name="Thought4TextPath" Data="M333,317 L384,380" Height="41.992" Canvas.Left="510" Stretch="Fill" Stroke="{StaticResource FactStrokeBrush}" StrokeThickness="7" Canvas.Top="239.008" UseLayoutRounding="False" Width="34" Opacity="0"/>
+			<TextBlock x:Name="textBlock" Canvas.Left="469" TextWrapping="Wrap" Text="Predecessor" Canvas.Top="89" Foreground="#FF18AD0C" FontSize="24" Opacity="0"/>
+			<TextBlock x:Name="textBlock1" Canvas.Left="358" TextWrapping="Wrap" Text="Successor" Canvas.Top="228" Foreground="#FF18AD0C" FontSize="24" Opacity="0"/>
 		</Canvas>
 	</Viewbox>
 </UserControl>

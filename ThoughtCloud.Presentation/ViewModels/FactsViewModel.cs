@@ -16,6 +16,7 @@ namespace ThoughtCloud_Presentation.ViewModels
             NewThought4,
             NewThought4Text,
             NewLink,
+            QueryNeighbors,
             NewShare
         }
 
@@ -55,25 +56,23 @@ namespace ThoughtCloud_Presentation.ViewModels
                 switch (_state.Value)
                 {
                     case StateId.NewIdentityMike:
-                        return "Identity mike = Community.AddFact(\nnew Identity(\"mike\"));";
                     case StateId.NewIdentityRussell:
-                        return "Identity russell = Community.AddFact(\nnew Identity(\"russell\"));";
+                        return "fact Identity {\nkey:\n    string userName;\n}";
                     case StateId.NewCloud1:
-                        return "Cloud cloud1 = Community.AddFact(new Cloud());";
                     case StateId.NewCloud2:
-                        return "Cloud cloud2 = Community.AddFact(new Cloud());";
+                        return "fact Cloud {\nkey:\n    unique;\n}";
                     case StateId.NewThought3:
-                        return "Thought thought3 = Community.AddFact(\nnew Thought(cloud1));";
+                        return "fact Thought {\nkey:\n    unique;\n    Cloud cloud;\n}";
                     case StateId.NewThought3Text:
-                        return "thought3.Text = \"Star Wars\";";
                     case StateId.NewThought4:
-                        return "Thought thought4 = Community.AddFact(\nnew Thought(cloud1));";
                     case StateId.NewThought4Text:
-                        return "thought4.Text = \"Characters\";";
+                        return "fact Thought {\nkey:\n    unique;\n    Cloud cloud;\n\nmutable:\n    string text;\n}";
                     case StateId.NewLink:
-                        return "Community.AddFact(new Link(\nnew List<Thought> { thought3, thought4 }));";
+                        return "fact Link {\nkey:\n    Thought* thoughts;\n}";
+                    case StateId.QueryNeighbors:
+                        return "fact Thought {\n...\nquery:\n    Thought* neighbors {\n        Link l : l.thoughts = this\n        Thought t : l.thoughts = t\n    }\n}";
                     case StateId.NewShare:
-                        return "Community.AddFact(new Share(russell, cloud1));";
+                        return "fact Share {\nkey:\n    publish Identity recipient;\n    Cloud cloud;\n}";
                 }
                 return string.Empty;
             }

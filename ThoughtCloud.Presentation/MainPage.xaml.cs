@@ -22,11 +22,11 @@ namespace ThoughtCloud_Presentation
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Right)
+            if (e.Key == Key.PageDown)
             {
                 _navigationGraph.Forward();
             }
-            else if (e.Key == Key.Left)
+            else if (e.Key == Key.PageUp)
             {
                 _navigationGraph.Backward();
             }
