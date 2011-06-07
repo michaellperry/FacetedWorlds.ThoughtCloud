@@ -8,12 +8,18 @@ namespace ThoughtCloud.Presentation.Navigation
     {
         private NavigationController _controller;
         private List<IPresentationViewModel> _viewModels = new List<IPresentationViewModel>();
-        private int _viewModelIndex = 0;
+        private int _index = 0;
 
         public NavigationGraph(NavigationController controller)
         {
             _controller = controller;
 
+            _viewModels.Add(new BulletPointViewModel("Correspondence")
+                .AddBullet("Local storage")
+                .AddBullet("Change queue")
+                .AddBullet("Synchronization service")
+                .AddBullet("Push notification")
+                .AddBullet("Conflict detection"));
             _viewModels.Add(new FactsViewModel());
             _viewModels.Add(new ArchitectureViewModel());
         }
@@ -25,21 +31,21 @@ namespace ThoughtCloud.Presentation.Navigation
 
         public void Forward()
         {
-            bool navigated = _viewModels[_viewModelIndex].Forward();
-            if (!navigated && _viewModelIndex < _viewModels.Count - 1)
+            bool navigated = _viewModels[_index].Forward();
+            if (!navigated && _index < _viewModels.Count - 1)
             {
-                _viewModelIndex++;
-                _controller.NavigateTo(_viewModels[_viewModelIndex]);
+                _index++;
+                _controller.NavigateTo(_viewModels[_index]);
             }
         }
 
         public void Backward()
         {
-            bool navigated = _viewModels[_viewModelIndex].Backward();
-            if (!navigated && _viewModelIndex > 0)
+            bool navigated = _viewModels[_index].Backward();
+            if (!navigated && _index > 0)
             {
-                _viewModelIndex--;
-                _controller.NavigateTo(_viewModels[_viewModelIndex]);
+                _index--;
+                _controller.NavigateTo(_viewModels[_index]);
             }
         }
     }
