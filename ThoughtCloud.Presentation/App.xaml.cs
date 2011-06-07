@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows;
 using ThoughtCloud.Presentation.Navigation;
-using ThoughtCloud_Presentation.ViewModels;
 
 namespace ThoughtCloud_Presentation
 {
 	public partial class App : Application
 	{
         private NavigationController _navigationController = new NavigationController();
+        private NavigationGraph _navigationGraph;
 
-		public App()
+        public App()
 		{
 			this.Startup += this.Application_Startup;
 			this.Exit += this.Application_Exit;
@@ -18,14 +18,16 @@ namespace ThoughtCloud_Presentation
 			InitializeComponent();
 		}
 
-		private void Application_Startup(object sender, StartupEventArgs e)
-		{
-			MainPage mainPage = new MainPage();
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            _navigationGraph = new NavigationGraph(_navigationController);
+            mainPage.NavigationGraph = _navigationGraph;
+
             this.RootVisual = mainPage;
             _navigationController.BeginMainPage(mainPage);
-
-            _navigationController.NavigateTo(new FactsViewModel());
-		}
+            _navigationGraph.Start();
+        }
 
 		private void Application_Exit(object sender, EventArgs e)
 		{

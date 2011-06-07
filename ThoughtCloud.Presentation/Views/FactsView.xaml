@@ -170,11 +170,6 @@
 			<i:Interaction.Behaviors>
 				<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
 			</i:Interaction.Behaviors>
-			<i:Interaction.Triggers>
-				<i:EventTrigger EventName="MouseLeftButtonDown">
-					<ThoughtCloud_Presentation:ButtonCommandBehavior Command="{Binding Next}"/>
-				</i:EventTrigger>
-			</i:Interaction.Triggers>
 			<TextBlock Height="64" Canvas.Left="51" TextWrapping="Wrap" Text="{Binding Code}" Canvas.Top="512" Width="724" FontSize="24" Foreground="White" TextAlignment="Center" FontFamily="Consolas"/>
 			<sdk:Label x:Name="IdentityMike" Height="75" Canvas.Left="51" Style="{StaticResource FactStyle}" Canvas.Top="66" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>

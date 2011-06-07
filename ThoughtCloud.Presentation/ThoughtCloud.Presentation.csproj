@@ -118,7 +118,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Navigation\NavigationController.cs" />
+    <Compile Include="Navigation\NavigationGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ArchitectureViewModel.cs" />
     <Compile Include="ViewModels\FactsViewModel.cs" />
     <Compile Include="ViewModels\IPresentationViewModel.cs" />
     <Compile Include="Views\ArchitectureView.xaml.cs">
@@ -199,6 +201,9 @@
     <None Include="Properties\OutOfBrowserSettings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <DesignData Include="SampleData\ArchitectureViewModelSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
     <DesignData Include="SampleData\FactsViewModelSampleData.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </DesignData>
