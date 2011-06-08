@@ -6,7 +6,6 @@ namespace ThoughtCloud_Presentation.ViewModels
     {
         public enum StateId
         {
-            Start,
             NewIdentityMike,
             NewIdentityRussell,
             NewCloud1,
@@ -17,7 +16,8 @@ namespace ThoughtCloud_Presentation.ViewModels
             NewThought4Text,
             NewLink,
             QueryNeighbors,
-            NewShare
+            NewShare,
+            PublishThoughts
         }
 
         private Independent<StateId> _state = new Independent<StateId>();
@@ -29,7 +29,7 @@ namespace ThoughtCloud_Presentation.ViewModels
 
         public bool Forward()
         {
-            if (_state.Value != StateId.NewShare)
+            if (_state.Value != StateId.PublishThoughts)
             {
                 _state.Value = _state.Value + 1;
                 return true;
@@ -40,7 +40,7 @@ namespace ThoughtCloud_Presentation.ViewModels
 
         public bool Backward()
         {
-            if (_state.Value != StateId.Start)
+            if (_state.Value != StateId.NewIdentityMike)
             {
                 _state.Value = _state.Value - 1;
                 return true;
@@ -73,6 +73,8 @@ namespace ThoughtCloud_Presentation.ViewModels
                         return "fact Thought {\n...\nquery:\n    Thought* neighbors {\n        Link l : l.thoughts = this\n        Thought t : l.thoughts = t\n    }\n}";
                     case StateId.NewShare:
                         return "fact Share {\nkey:\n    publish Identity recipient;\n    Cloud cloud;\n}";
+                    case StateId.PublishThoughts:
+                        return "fact Thought {\nkey:\n    unique;\n    publish Cloud cloud;\n\nmutable:\n    string text;\n}";
                 }
                 return string.Empty;
             }

@@ -20,6 +20,11 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Synchronization service")
                 .AddBullet("Push notification")
                 .AddBullet("Conflict detection"));
+            _viewModels.Add(new BulletPointViewModel("Key Concepts")
+                .AddBullet("Facts")
+                .AddBullet("Storage strategy")
+                .AddBullet("Communication strategy")
+                .AddBullet("Community"));
             _viewModels.Add(new FactsViewModel());
             _viewModels.Add(new ArchitectureViewModel());
         }

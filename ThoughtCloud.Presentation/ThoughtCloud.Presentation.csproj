@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Behaviors\BindingListener.cs" />
     <Compile Include="Behaviors\ButtonCommandBehavior.cs" />
+    <Compile Include="Converters\HighlighterConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
