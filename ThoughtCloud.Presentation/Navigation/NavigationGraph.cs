@@ -14,6 +14,12 @@ namespace ThoughtCloud.Presentation.Navigation
         {
             _controller = controller;
 
+            _viewModels.Add(new BulletPointViewModel("Occasionally Connected Clients")
+                .AddBullet("View data off-line")
+                .AddBullet("Make changes off-line")
+                .AddBullet("Work with a subset of data")
+                .AddBullet("Store and forward")
+                .AddBullet("Propogate changes to the user"));
             _viewModels.Add(new BulletPointViewModel("Correspondence")
                 .AddBullet("Local storage")
                 .AddBullet("Change queue")
@@ -21,10 +27,9 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Push notification")
                 .AddBullet("Conflict detection"));
             _viewModels.Add(new BulletPointViewModel("Correspondence is Not")
-                .AddBullet("Objects")
-                .AddBullet("Records")
-                .AddBullet("ORM")
-                .AddBullet("Consistent"));
+                .AddBullet("Object oriented")
+                .AddBullet("Relational")
+                .AddBullet("An ORM"));
             _viewModels.Add(new BulletPointViewModel("Key Concepts")
                 .AddBullet("Facts")
                 .AddBullet("Storage strategy")
@@ -47,6 +52,17 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Subscribes to queues")
                 .AddBullet("Model agnostic"));
             _viewModels.Add(new ArchitectureViewModel());
+            _viewModels.Add(new BulletPointViewModel("Roadmap")
+                .AddBullet("Model browser")
+                .AddBullet("Security")
+                .AddBullet("Self hosting")
+                .AddBullet("Tiered service plans")
+                .AddBullet("Enterprise tools"));
+            _viewModels.Add(new BulletPointViewModel("Next Steps")
+                .AddBullet("NuGet Correspondence.Silverlight.AllInOne")
+                .AddBullet("http://Correspondence.CodePlex.com")
+                .AddBullet("mperry@mallardsoft.com")
+                .AddBullet("http://HistoricalModeling.com"));
         }
 
         public void Start()
