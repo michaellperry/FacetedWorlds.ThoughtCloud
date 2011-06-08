@@ -20,12 +20,32 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Synchronization service")
                 .AddBullet("Push notification")
                 .AddBullet("Conflict detection"));
+            _viewModels.Add(new BulletPointViewModel("Correspondence is Not")
+                .AddBullet("Objects")
+                .AddBullet("Records")
+                .AddBullet("ORM")
+                .AddBullet("Consistent"));
             _viewModels.Add(new BulletPointViewModel("Key Concepts")
                 .AddBullet("Facts")
                 .AddBullet("Storage strategy")
                 .AddBullet("Communication strategy")
                 .AddBullet("Community"));
             _viewModels.Add(new FactsViewModel());
+            _viewModels.Add(new BulletPointViewModel("Storage Strategy")
+                .AddBullet("Stores facts")
+                .AddBullet("Executes queries")
+                .AddBullet("Manages queues")
+                .AddBullet("Model agnostic"));
+            _viewModels.Add(new BulletPointViewModel("Communication strategy")
+                .AddBullet("Sends facts")
+                .AddBullet("Receives facts")
+                .AddBullet("Listens for push notifications")
+                .AddBullet("Model agnostic"));
+            _viewModels.Add(new BulletPointViewModel("Community")
+                .AddBullet("Calls strategies")
+                .AddBullet("Caches facts")
+                .AddBullet("Subscribes to queues")
+                .AddBullet("Model agnostic"));
             _viewModels.Add(new ArchitectureViewModel());
         }
 
