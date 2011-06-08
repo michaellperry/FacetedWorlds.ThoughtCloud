@@ -206,6 +206,29 @@
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentitySharePath" d:IsOptimized="True"/>
 						<ColorAnimation Duration="0" To="#FF974B4B" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Thought3Path" d:IsOptimized="True"/>
 						<ColorAnimation Duration="0" To="#FF974B4B" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Thought4Path" d:IsOptimized="True"/>
+						<ColorAnimation Duration="0" To="#FF974B4B" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="IdentitySharePath" d:IsOptimized="True"/>
+					</Storyboard>
+				</VisualState>
+				<VisualState x:Name="QueryClouds">
+					<Storyboard>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentityMike" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentityRussell" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cloud1" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3Path" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3Text" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3TextPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4Path" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4Text" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4TextPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Link" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought3LinkPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Thought4LinkPath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ShareRussell" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloudSharePath" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IdentitySharePath" d:IsOptimized="True"/>
+						<ColorAnimation Duration="0" To="#FF974B4B" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="IdentitySharePath" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 			</VisualStateGroup>
@@ -216,7 +239,7 @@
 				<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
 			</i:Interaction.Behaviors>
 			<Border Height="220" Canvas.Left="139" Canvas.Top="372" Width="529" Background="White" CornerRadius="12">
-				<TextBlock TextWrapping="Wrap" Text="{Binding Code}" FontSize="21.333" Foreground="Black" FontFamily="Consolas" Margin="8,0"/>
+				<TextBlock TextWrapping="Wrap" FontSize="21.333" Foreground="Black" FontFamily="Consolas" Margin="8,0" Text="{Binding Code}"/>
 			</Border>
 			<sdk:Label x:Name="IdentityMike" Height="75" Canvas.Left="51" Style="{StaticResource FactStyle}" Canvas.Top="26" Width="146" Opacity="0" RenderTransformOrigin="0.5,0.5">
 				<sdk:Label.RenderTransform>

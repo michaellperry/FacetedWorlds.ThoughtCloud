@@ -17,6 +17,7 @@ namespace ThoughtCloud_Presentation.ViewModels
             NewLink,
             QueryNeighbors,
             NewShare,
+            QueryClouds,
             PublishThoughts
         }
 
@@ -73,6 +74,8 @@ namespace ThoughtCloud_Presentation.ViewModels
                         return "fact Thought {\n...\nquery:\n    Thought* neighbors {\n        Link l : l.thoughts = this\n        Thought t : l.thoughts = t\n    }\n}";
                     case StateId.NewShare:
                         return "fact Share {\nkey:\n    publish Identity recipient;\n    Cloud cloud;\n}";
+                    case StateId.QueryClouds:
+                        return "fact Identity {\n...\nquery:\n    Cloud* sharedClouds {\n        Share s : s.recipient = this\n        Cloud c : s.cloud = c\n    }\n}";
                     case StateId.PublishThoughts:
                         return "fact Thought {\nkey:\n    unique;\n    publish Cloud cloud;\n\nmutable:\n    string text;\n}";
                 }

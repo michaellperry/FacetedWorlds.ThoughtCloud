@@ -32,7 +32,7 @@
 				<i:Interaction.Behaviors>
 					<Itzben:BindVisualStateBehavior StateName="{Binding State}"/>
 				</i:Interaction.Behaviors>
-				<Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="9,11,0,0" Stroke="Black" Width="10" Height="10" VerticalAlignment="Top"/>
+				<Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="9,11,0,0" Width="10" Height="10" VerticalAlignment="Top" StrokeThickness="0"/>
 				<TextBlock Text="{Binding Text}" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Column="1"/>
 			</Grid>
 		</DataTemplate>
