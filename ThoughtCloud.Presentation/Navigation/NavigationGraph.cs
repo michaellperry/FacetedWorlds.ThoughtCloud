@@ -41,7 +41,7 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Executes queries")
                 .AddBullet("Manages queues")
                 .AddBullet("Model agnostic"));
-            _viewModels.Add(new BulletPointViewModel("Communication strategy")
+            _viewModels.Add(new BulletPointViewModel("Communication Strategy")
                 .AddBullet("Sends facts")
                 .AddBullet("Receives facts")
                 .AddBullet("Listens for push notifications")
@@ -59,8 +59,8 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Tiered service plans")
                 .AddBullet("Enterprise tools"));
             _viewModels.Add(new BulletPointViewModel("Next Steps")
-                .AddBullet("NuGet Correspondence.Silverlight.AllInOne")
-                .AddBullet("http://Correspondence.CodePlex.com")
+                .AddBullet("NuGet Correspondence. Silverlight.AllInOne")
+                .AddBullet("http://Correspondence. CodePlex.com")
                 .AddBullet("mperry@mallardsoft.com")
                 .AddBullet("http://HistoricalModeling.com"));
         }

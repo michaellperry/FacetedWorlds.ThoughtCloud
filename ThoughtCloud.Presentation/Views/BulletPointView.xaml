@@ -45,7 +45,7 @@
     			<RowDefinition Height="Auto"/>
     			<RowDefinition/>
     		</Grid.RowDefinitions>
-    		<TextBlock Text="{Binding Title}" Margin="8,8,0,8" HorizontalAlignment="Left" Width="384" Foreground="White" FontSize="32" TextAlignment="Center"/>
+    		<TextBlock Text="{Binding Title}" Margin="8,8,0,8" HorizontalAlignment="Left" Width="384" Foreground="White" FontSize="32" TextAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap"/>
     		<ItemsControl ItemTemplate="{StaticResource StringTemplate}" ItemsSource="{Binding Bullets}" Margin="21,8,8,8" Grid.Row="1" FontSize="21.333" Foreground="White"/>
     	</Grid>
 	</Viewbox>
