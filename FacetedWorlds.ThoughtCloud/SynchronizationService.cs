@@ -30,7 +30,7 @@ namespace FacetedWorlds.ThoughtCloud
                 .Subscribe(() => _navigationModel.CurrentUser.SharedClouds)
                 ;
 
-            _navigationModel.CurrentUser = _community.AddFact(new Identity("mike"));
+            _navigationModel.CurrentUser = _community.AddFact(new Identity("mike2"));
 
             // Synchronize whenever the user has something to send.
             _community.FactAdded += delegate

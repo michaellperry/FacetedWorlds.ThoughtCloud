@@ -14,6 +14,14 @@ namespace ThoughtCloud.Presentation.Navigation
         {
             _controller = controller;
 
+            _viewModels.Add(new TitleViewModel());
+            _viewModels.Add(new SlidesAndCodeViewModel());
+            _viewModels.Add(new AboutMeViewModel());
+            _viewModels.Add(new BulletPointViewModel("Occasionally-connected Silverlight clients")
+                .AddBullet("Why?")
+                .AddBullet("Architecture")
+                .AddBullet("Correspondence")
+                .AddBullet("Next steps"));
             _viewModels.Add(new BulletPointViewModel("Occasionally Connected Clients")
                 .AddBullet("View data off-line")
                 .AddBullet("Make changes off-line")
@@ -26,43 +34,23 @@ namespace ThoughtCloud.Presentation.Navigation
                 .AddBullet("Synchronization service")
                 .AddBullet("Push notification")
                 .AddBullet("Conflict detection"));
-            _viewModels.Add(new BulletPointViewModel("Correspondence is Not")
-                .AddBullet("Object oriented")
-                .AddBullet("Relational")
-                .AddBullet("An ORM"));
-            _viewModels.Add(new BulletPointViewModel("Key Concepts")
-                .AddBullet("Facts")
-                .AddBullet("Storage strategy")
-                .AddBullet("Communication strategy")
-                .AddBullet("Community"));
-            _viewModels.Add(new FactsViewModel());
-            _viewModels.Add(new BulletPointViewModel("Storage Strategy")
-                .AddBullet("Stores facts")
-                .AddBullet("Executes queries")
-                .AddBullet("Manages queues")
-                .AddBullet("Model agnostic"));
-            _viewModels.Add(new BulletPointViewModel("Communication Strategy")
-                .AddBullet("Sends facts")
-                .AddBullet("Receives facts")
-                .AddBullet("Listens for push notifications")
-                .AddBullet("Model agnostic"));
-            _viewModels.Add(new BulletPointViewModel("Community")
+            _viewModels.Add(new ArchitectureViewModel());
+            _viewModels.Add(new BulletPointViewModel("The Community is ...")
+                .AddBullet("Users")
+                .AddBullet("Devices")
+                .AddBullet("Data")
+                .AddBullet("Services"));
+            _viewModels.Add(new BulletPointViewModel("The Community ...")
                 .AddBullet("Calls strategies")
                 .AddBullet("Caches facts")
                 .AddBullet("Subscribes to queues")
-                .AddBullet("Model agnostic"));
-            _viewModels.Add(new ArchitectureViewModel());
-            _viewModels.Add(new BulletPointViewModel("Roadmap")
-                .AddBullet("Model browser")
-                .AddBullet("Security")
-                .AddBullet("Self hosting")
-                .AddBullet("Tiered service plans")
-                .AddBullet("Enterprise tools"));
+                .AddBullet("Is model agnostic"));
+            _viewModels.Add(new FactsViewModel());
             _viewModels.Add(new BulletPointViewModel("Next Steps")
+                .AddBullet("qedcode.com/correspondence")
                 .AddBullet("NuGet Correspondence. Silverlight.AllInOne")
-                .AddBullet("http://Correspondence. CodePlex.com")
-                .AddBullet("mperry@mallardsoft.com")
-                .AddBullet("http://HistoricalModeling.com"));
+                .AddBullet("Correspondence.CodePlex.com")
+                .AddBullet("@MichaelLPerry"));
         }
 
         public void Start()

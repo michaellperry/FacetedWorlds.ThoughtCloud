@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ThoughtCloud_Presentation.Views.AboutMeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="405" d:DesignWidth="400">
+    
+    <Viewbox>
+    
+		<Grid x:Name="LayoutRoot" Height="395" Width="400">
+			<TextBlock HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" Text="Michael L Perry" VerticalAlignment="Top" FontSize="26.667" Foreground="White"/>
+			<TextBlock Margin="29,82,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="21.333" Text="• qedcode.com&#xd;&#xa;• @MichaelLPerry&#xd;&#xa;• Update Controls&#xd;&#xa;• Correspondence&#xd;&#xa;• Client App Dev"/>
+			<Image Margin="0,0,28,24" Source="MVP_FullColor_ForScreen.png" Stretch="Fill" HorizontalAlignment="Right" Height="108" VerticalAlignment="Bottom" Width="69"/>
+		</Grid>
+	</Viewbox>
+</UserControl>

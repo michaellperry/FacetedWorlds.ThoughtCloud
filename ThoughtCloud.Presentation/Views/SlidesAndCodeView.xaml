@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ThoughtCloud_Presentation.Views.SlidesAndCodeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="221" d:DesignWidth="167">
+    
+    <Viewbox>
+    
+		<Grid x:Name="LayoutRoot" Height="221" Width="167">
+			<TextBlock Margin="0,21,0,0" TextWrapping="Wrap" Text="Slides and Code" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Center"/>
+			<Image Source="Image1.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Top" Height="114" Width="114" Margin="0,92,0,0"/>
+			<TextBlock Margin="0,51,0,0" TextWrapping="Wrap" Text="qedcode.com/correspondence" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Center"/>
+		</Grid>
+	</Viewbox>
+</UserControl>
