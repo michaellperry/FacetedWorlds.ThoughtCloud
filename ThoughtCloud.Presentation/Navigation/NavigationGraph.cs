@@ -17,6 +17,7 @@ namespace ThoughtCloud.Presentation.Navigation
             _viewModels.Add(new TitleViewModel());
             _viewModels.Add(new SlidesAndCodeViewModel());
             _viewModels.Add(new AboutMeViewModel());
+            _viewModels.Add(new BrainViewModel());
             _viewModels.Add(new BulletPointViewModel("Occasionally-connected Silverlight clients")
                 .AddBullet("Why?")
                 .AddBullet("Architecture")
