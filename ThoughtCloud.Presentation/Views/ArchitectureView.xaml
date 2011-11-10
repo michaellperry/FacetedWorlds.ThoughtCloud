@@ -9,7 +9,7 @@
 	<UserControl.Resources>
 		<RadialGradientBrush x:Key="GlowBrush">
 			<GradientStop Offset="1" Color="#00FBA8A8"/>
-			<GradientStop Color="#67FDB4B4"/>
+			<GradientStop Color="#CFFB7D7D"/>
 		</RadialGradientBrush>
 	</UserControl.Resources>
     
